@@ -82,31 +82,15 @@ section {
     font-size: 20px;
     margin-bottom: 30px;
     text-align: center;
-
+    margin-top: 0;
+}
+#div1 img{
+    width: 100px;
+}
+.mail-mp{
+    display: flex;
+}
+.intituler{
+    margin-left: 10px;
 }
 
-#div1 label {
-    font-size: 15px;
-    font-weight: bold;
-    margin-left: 21%;
-}
-
-.texte {
-    background: white;
-    border-radius: 20px;
-    height: 41px;
-    width: 283px;
-    border: 0;
-    margin-bottom: 20px;
-
-}
-.boutton{
-    border-radius: 20px;
-    height: 40px;
-    width: 136px;
-    margin-top: 20px;
-}
-#boutton-connexion{
-    border: 0;
-    background: #d3ae37;
-}
