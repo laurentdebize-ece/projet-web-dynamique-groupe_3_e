@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil</title>
+    <link rel="stylesheet" href="/css/accueil.css">
+    <script src="/js/Accueil.js"></script>
+</head>
+<body>
+<header>
+    <a href="Accueil.html" ><img src="/image/logo%20site.png" alt="logo" class="logo"></a>
+    <nav>
+        <ol>
+            <li> <a href="Accueil.html">Accueil</a> </li>
+            <li> <a href="OmnesBox.html">Ma OmnesBox</a> </li>
+            <li> <a href="carte-cadeau.html">Carte cadeau</a> </li>
+            <li> <a href="Panier.html"><img src="/image/panier.png" alt="icone-panier"></a><a href="Mon%20compte.html"><img src="/image/compte.png" alt="icone-compte"></a> </li>
+        </ol>
+    </nav>
+    <div id="ligne"></div>
+
+</header>
+<section>
+    <div id="compte">
+        <h2> Créer mon compte</h2>
+        <form method="post" name="form" action="php.php" >
+            <label for="nom" id="surname"> Nom</label><br>
+            <input type="text" name="nom" id="nom" required><br>
+
+            <label for="prenom" id="name"> Prénom</label><br>
+            <input type="text" name="prenom" id="prenom" required><br>
+
+            <label for="statut2" id="statut"> Statut</label><br>
+            <input type="text" name="statut" id="statut2" required><br>
+
+            <label for="email" id="mail">Adresse mail  </label><br>
+            <input type="text" name="email" id="email" required><br>
+
+            <label for="password" id="mdp">mot de passe  </label><br>
+            <input type="text" name="password" id="password" required><br>
+
+            <input type="submit" name="envoyer" value="créer mon compte">
+        </form>
+    </div>
+</section>
+<footer>
+    <a href="Accueil.html" ><img src="/image/logo%20site.png" alt="logo" class="logo"></a>
+    <p>Created by Le Quellec, Chaperon, Fornier, Bouroullec</p>
+</footer>
+
+</body>
+</html>
