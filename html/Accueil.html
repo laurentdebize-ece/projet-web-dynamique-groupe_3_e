@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
-    <link rel="stylesheet" href="/css/accueil.css">
+    <link rel="stylesheet" href="C:\MAMP\htdocs\projet\projet-web-dynamique-groupe_3_e\css\accueil.css">
     <script src="/js/Accueil.js"></script>
 </head>
 <body>
@@ -21,7 +21,27 @@
 
 </header>
 <section>
+    <div id="compte">
+        <h2> Créer mon compte</h2>
+        <form method="post" name="form" action="php.php" >
+            <label for="nom" id="surname"> Nom</label><br>
+            <input type="text" name="nom" required><br>
 
+            <label for="prenom" id="name"> Prénom</label><br>
+            <input type="text" name="prenom" required><br>
+
+            <label for="statut" id="statut"> Statut</label><br>
+            <input type="text" name="statut" required><br>
+
+            <label for="email" id="mail">Adresse mail  </label><br>
+            <input type="text" name="email" required><br>
+
+            <label for="password" id="mdp">mot de passe  </label><br>
+            <input type="text" name="password" required><br>
+
+            <input type="submit" name="envoyer" value="créer mon compte">
+        </form>
+    </div>
 </section>
 <footer>
     <a href="Accueil.html" ><img src="/image/logo%20site.png" alt="logo" class="logo"></a>

@@ -1,4 +1,5 @@
 body{
+<<<<<<< HEAD
     background: black;
     color: white;
 }
@@ -49,3 +50,45 @@ footer{
 footer p{
    float: right;
 }
+=======
+    background-color: rgb(12, 12, 12);
+    display: flex;
+    justify-content: center;
+}
+div{
+    background-color: rgb(186, 186, 186);
+    width: 450px;
+    height: 370px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 3px;
+}
+h2{
+    text-align: center;
+}
+#compte{
+    margin-top: 10%;
+}
+#form{
+    text-align: center;
+}
+
+#surname{
+    text-align: left;
+}
+#name{
+    text-align: left;
+}
+#mail{
+    text-align: left;
+}
+#mdp{
+    text-align: left;
+}
+input{
+    margin-top: 10px;
+    border-radius: 10px;
+}
+>>>>>>> theo
