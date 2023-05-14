@@ -1,20 +1,25 @@
+
 body{
-    background: black;
-    color: white;
+    background: black !important;
+    color: white !important;
+    overflow-x: hidden;
 }
 header{
+    color: white;
+    z-index: 6;
+    width: 98%;
     margin-left: 1.25%;
     margin-right: 1.25%;
     height: 60px;
 }
-nav {
+header nav {
     float: right;
     width: 30%;
     margin-right: 1.25%;
     height: 100%;
 
 }
-nav ol{
+header nav ol{
     list-style: none;
     display: flex;
     justify-content: space-between;
@@ -26,13 +31,35 @@ nav ol a{
     color: white;
     text-decoration: none;
 }
+header nav li{
+    position: relative;
+
+}
 nav ol a img{
     height: 35px;
     width: 35px;
 }
+
 .logo{
+    position: relative;
     height: 56px;
     width: 250px;
+}
+#icone{
+    display: flex;
+    justify-content: space-between;
+}
+#menu{
+    position: relative;
+    padding-top: 15%;
+    left: 110px;
+}
+.petite-ligne{
+    height: 2px;
+    width: 30px;
+    margin-bottom: 5px;
+    background: white;
+    transition: transform 0.2s ease-in-out;
 }
 #ligne{
     height: 2px;
@@ -48,4 +75,188 @@ footer{
 }
 footer p{
    float: right;
+}
+section{
+    display: flex;
+    z-index: 1;
+}
+#menu2{
+    position: fixed;
+    z-index: 5;
+    background:black;
+    left: 100%;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    padding-top: 15%;
+
+}
+#menu2 ol{
+    list-style: none;
+    text-align: center;
+    padding: 0;
+    height: 100%;
+
+}
+#menu2 ol li{
+    height: 33.33%;
+    font-size: 500%;
+
+
+}
+
+.div1{
+    text-align: center;
+    margin-bottom: 100px;
+
+}
+#carte{
+    position: relative;
+    display: flex;
+    padding-top: 200px;
+    width: 120%;
+    left: 37%;
+    margin-bottom: 2%;
+    justify-content: space-between;
+}
+#image-carte-1{
+
+    height: 271px;
+    width: 430px;
+}
+#image-carte-2 ,#image-carte-3{
+    height: 196px;
+    width: 310px;
+
+}
+
+#conternaire-ligne{
+    padding-top: 200px;
+    display: flex;
+    margin: 0 auto;
+    width: max-content;
+
+
+}
+.ligne2{
+    background: #5f5f5f;
+    height: 2px;
+    width: 170px;
+    margin-right: 5%;
+
+}
+#ligne2-1{
+    background:white;
+    height: 2px;
+    width: 170px;
+}
+#ligne2-3{
+    background: #5f5f5f;
+
+    height: 2px;
+    width: 170px;
+}
+.centrer{
+    margin: 0 auto;
+    width: 100%;
+
+}
+#div2{
+    margin-top: 300px;
+    display: flex;
+}
+#div2{
+    display: flex;
+}
+#div2 img{
+
+    border-bottom-left-radius: 280px;
+    border-top-left-radius: 280px;
+    width:840px;
+    height: 416px;
+
+}
+#block-rose-image{
+    display: flex;
+}
+#block-rose{
+    width:200px;
+    height: 416px;
+    background: #eed5dd;
+
+}
+.text-block-rose{
+    position: relative;
+    left: 10%;
+}
+
+#slogan{
+    font-size: 30px;
+}
+#texte-block-rose{
+    font-size: 20px;
+}
+#div3{
+    display: flex;
+    margin-top: 300px;
+    margin-bottom: 300px;
+    padding-left: 10%;
+    padding-right: 10%;
+
+}
+#contenaire-image-div3{
+    background: #ebd2da;
+    width: max-content;
+    height: max-content;
+}
+#div3 img{
+    position: relative;
+    top: 10px;
+    left: 10px;
+    height: 367px;
+    width: 520px;
+}
+#texte-div3{
+    z-index:2;
+}
+.texte-div3{
+    display: flex;
+    height: 25%;
+    z-index:6;
+}
+.texte-div3 p{
+    visibility: hidden;
+    height: 100%;
+    margin:0 -4px 0 0;
+    text-align: center;
+    padding-top: 1%;
+
+
+}
+.texte-div3 h3{
+    position: relative;
+    margin : auto;
+    left: 80%;
+    font-size: 20px;
+}
+#contenaire-ligne-div3{
+    z-index:1;
+
+}
+#ligne-div3{
+    background: white;
+    width: 1px;
+    height: 100%;
+
+}
+.texte-div3 h3:hover {
+color: #d3ae37;
+    left: 10%;
+
+}
+.texte-div3 h3:hover + .texte-div3-p{
+    color: #d3ae37;
+    visibility: visible;
+    padding-left: 15%;
+    border-right: #d3ae37 5px solid;
 }

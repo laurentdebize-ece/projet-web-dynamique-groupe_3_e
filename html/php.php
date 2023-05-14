@@ -1,7 +1,8 @@
 <?php
+
 try {
     // Connexion à la base de données MySQL
-    $bdd = new PDO('mysql:host=localhost;dbname=omnesbox;charset=utf8', 'root', 'root');
+    $bdd = new PDO('mysql:host=localhost;dbname=omnesbox;charset=utf8', 'root', '');
     // Définition du mode d'erreur de PDO sur Exception
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (Exception $e) {

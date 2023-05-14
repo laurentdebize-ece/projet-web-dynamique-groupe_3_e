@@ -49,3 +49,51 @@ footer{
 footer p{
     float: right;
 }
+
+section {
+    width: 100%;
+}
+
+#div1 {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    text-decoration: none;
+    padding-top: 5px;
+    padding-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #e4e4e4;
+    color: black;
+    width: 439px;
+}
+.centrer{
+    text-align: center;
+}
+#div1 h1 {
+    font-size: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+
+}
+
+#div1 label {
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 21%;
+}
+
+.texte {
+    background: white;
+    border-radius: 20px;
+    height: 41px;
+    width: 283px;
+    border: 0;
+    margin-bottom: 20px;
+
+}
+.boutton{
+    border-radius: 20px;
+    height: 40px;
+    width: 136px;
+    margin-top: 20px;
+}

@@ -3,28 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <title>Accueil</title>
-    <link rel="stylesheet" href="/css/creer-compte.css">
+    <link rel="stylesheet" href="../css/accueil.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/Accueil.js"></script>
 </head>
 <body>
 <header>
-    <a href="Accueil.html" ><img src="/image/logo%20site.png" alt="logo" class="logo"></a>
+    <a id="contenaire-logo" href="Accueil.html"><img id="logo" src="/image/logo%20site.png" alt="logo" class="logo"></a>
     <nav>
         <ol>
-            <li> <a href="Accueil.html">Accueil</a> </li>
-            <li> <a href="OmnesBox.html">Ma OmnesBox</a> </li>
-            <li> <a href="carte-cadeau.html">Carte cadeau</a> </li>
-            <li> <a href="Panier.html"><img src="/image/panier.png" alt="icone-panier"></a><a href="Mon%20compte.html"><img src="/image/compte.png" alt="icone-compte"></a> </li>
+            <li id="accueil"><a href="Accueil.html">Accueil</a></li>
+            <li id="omnesbox"><a href="OmnesBox.html">Ma OmnesBox</a></li>
+            <li id="carte-cadeau"><a href="carte-cadeau.html">Carte cadeau</a></li>
+            <li id="icone"><a href="Panier.html"><img src="/image/panier.png" alt="icone-panier"></a><a
+                    href="Mon%20compte.html"><img src="/image/compte.png" alt="icone-compte"></a>
+                <div id="menu">
+                    <div class="petite-ligne" id="petite-ligne-1"></div>
+                    <div class="petite-ligne" id="petite-ligne-2"></div>
+                </div>
+            </li>
         </ol>
     </nav>
     <div id="ligne"></div>
 
 </header>
 <section>
+    <nav id="menu2">
+        <ol class="d-flex flex-column mb-3">
+            <li class="p-2" id="accueil2"><a href="Accueil.html">Accueil</a></li>
+            <li class="p-2" id="omnesbox2"><a href="OmnesBox.html">Ma OmnesBox</a></li>
+            <li class="p-2" id="carte-cadeau2"><a href="carte-cadeau.html">Carte cadeau</a></li>
 
+        </ol>
+    </nav>
+    <div>
+        <div class="div1">
+            <div id="carte">
+                <div id="conternaire-carte-1"><img id="image-carte-1" class="carte" src="/image/carte-cadeau.png"
+                                                   alt="carte cadeau"></div>
+                <div id="conternaire-carte-2"><img id="image-carte-2" class="carte" src="/image/carte-cadeau.png"
+                                                   alt="carte cadeau"></div>
+                <div id="conternaire-carte-3"><img id="image-carte-3" class="carte" src="/image/carte-cadeau.png"
+                                                   alt="carte cadeau"></div>
+            </div>
+            <div class="centrer">
+                <div id="conternaire-ligne">
+                    <div id="ligne2-1" class="ligne2"></div>
+                    <div id="ligne2-2" class="ligne2"></div>
+                    <div id="ligne2-3"></div>
+                </div>
+            </div>
+        </div>
+        <div id="div2">
+            <div class="text-block-rose">
+                <p id="slogan">Fêtez l’anniversaire de vos proches en leur offrant la liberté de choisir</p>
+                <p id="texte-block-rose">Omnes Box est une entreprise spécialisée dans la vente de cartes cadeaux pour
+                    une
+                    multitude de marques
+                    réputées. Avec une grande variété de choix allant des restaurants aux magasins en ligne, en passant
+                    par
+                    les
+                    boutiques de mode et les établissements de soins de beauté, les cartes Omnes Box sont la solution
+                    idéale
+                    pour offrir un cadeau apprécié par tous.</p>
+            </div>
+            <div id="block-rose-image">
+                <img src="/image/photo-axel.webp" alt="photo axel">
+                <div id="block-rose"></div>
+            </div>
+        </div>
+        <div id="div3">
+            <div id="contenaire-image-div3">
+                <img src="/image/joyeux-anniversaire-amie.jpg">
+            </div>
+            <div id="texte-div3">
+                <div class="texte-div3">
+                    <h3 id="texte-div3-h3-1">Flexibilité</h3>
+                    <p class="texte-div3-p"> Les cartes-cadeaux offrent une grande flexibilité aux destinataires, qui
+                        peuvent choisir leur propre
+                        cadeau ou leur propre expérience.</p>
+
+
+                </div>
+                <div class="texte-div3">
+                    <h3 id="texte-div3-h3-2">Flexibilité</h3>
+                    <p class="texte-div3-p"> Les cartes-cadeaux offrent une grande flexibilité aux destinataires, qui
+                        peuvent choisir leur propre
+                        cadeau ou leur propre expérience.</p>
+
+                </div>
+                <div class="texte-div3">
+                    <h3 id="texte-div3-h3-3">Flexibilité</h3>
+                    <p class="texte-div3-p"> Les cartes-cadeaux offrent une grande flexibilité aux destinataires, qui
+                        peuvent choisir leur propre
+                        cadeau ou leur propre expérience.</p>
+
+                </div>
+                <div class="texte-div3">
+                    <h3 id="texte-div3-h3-4">Flexibilité</h3>
+                    <p class="texte-div3-p"> Les cartes-cadeaux offrent une grande flexibilité aux destinataires, qui
+                        peuvent choisir leur propre
+                        cadeau ou leur propre expérience.</p>
+                </div>
+            </div>
+            <div id="contenaire-ligne-div3">
+                <div id="ligne-div3"></div>
+            </div>
+
+        </div>
+    </div>
 </section>
 <footer>
-    <a href="Accueil.html" ><img src="/image/logo%20site.png" alt="logo" class="logo"></a>
+    <a href="Accueil.html"><img src="/image/logo%20site.png" alt="logo" class="logo"></a>
     <p>Created by Le Quellec, Chaperon, Fornier, Bouroullec</p>
 </footer>
 
