@@ -68,7 +68,7 @@ $(document).ready(function(){
             $('#accueil').animate({top:'-100px'});
             $('#omnesbox').animate({top:'-100px'});
             $('#carte-cadeau').animate({top:'-100px'});
-            $('#logo').animate({height :'112px',width :'500px',top:'120%', left:'34%'});
+            $('#logo').animate({height :'112px',width :'500px',top:'120%', left:'30%'});
             $('#menu').animate({left:'0px'});
 
        }
