@@ -94,3 +94,15 @@ section {
     margin-left: 10px;
 }
 
+.boutton{
+    border-radius: 20px;
+    height: 40px;
+    width: 136px;
+    margin-top: 20px;
+}
+#boutton-connexion{
+    border: 0;
+    background: #d3ae37;
+}
+  
+
