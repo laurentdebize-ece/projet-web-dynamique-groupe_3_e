@@ -27,7 +27,7 @@
                 <html lang="fr">
                 <head>
                     <title>Redirection</title>
-                    <meta http-equiv="refresh" content="3; URL=../html/Mon compte.html">
+                    <meta http-equiv="refresh" content="3; URL=../php/Mon%20compte1.php">
                 </head>
                 <body>
                     <h1>Erreur</h1>
@@ -36,6 +36,20 @@
                 </body>
             ';
         } else {
+
+            // Commencer une nouvelle session
+            session_start();
+
+            // Stocker les données utilisateur dans des variables de session
+            $_SESSION["connecte"] = true;
+            $_SESSION["ID"] = $data['ID_utilisateur']; 
+            $_SESSION["Adresse_mail"] = $data['Adresse_mail']; 
+            $_SESSION["Mot_de_passe"] = $data['Mot_de_passe'];
+            $_SESSION["Nom"] = $data['Nom'];
+            $_SESSION["Prenom"] = $data['Prenom'];
+            $_SESSION["Statut"] = $data['Statut'];
+            
+
             echo'
             <!DOCTYPE html>
             <html lang="fr">
@@ -53,7 +67,7 @@
                         <li> <a href="../html/Accueil.html">Accueil</a> </li>
                         <li> <a href="../html/OmnesBox.html">Ma OmnesBox</a> </li>
                         <li> <a href="../html/carte-cadeau.html">Carte cadeau</a> </li>
-                        <li> <a href="../html/Panier.html"><img src="../image/panier.png" alt="icone-panier"></a><a href="../html/Mon compte.html"><img src="../image/compte.png" alt="icone-compte"></a> </li>
+                        <li> <a href="../html/Panier.html"><img src="../image/panier.png" alt="icone-panier"></a><a href="../php/Mon%20compte1.php"><img src="../image/compte.png" alt="icone-compte"></a> </li>
                     </ol>
                 </nav>
                 <div id="ligne"></div>
@@ -80,5 +94,7 @@
 
 
     }
-
+    
+    // Fermer la connexion à la base de données
+    mysqli_close($db_handle);
 ?>
