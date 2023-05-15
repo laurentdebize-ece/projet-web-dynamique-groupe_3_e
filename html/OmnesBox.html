@@ -8,23 +8,50 @@
 </head>
 <body>
 <header>
-    <a href="../html/Accueil.html" ><img src="../image/logo%20site.png" alt="logo" class="logo"></a>
+    <a href="../html/Accueil.html"><img src="../image/logo%20site.png" alt="logo" class="logo"></a>
     <nav>
         <ol>
-            <li> <a href="../html/Accueil.html">Accueil</a> </li>
-            <li> <a href="../html/OmnesBox.html">Ma OmnesBox</a> </li>
-            <li> <a href="../html/carte-cadeau.html">Carte cadeau</a> </li>
-            <li> <a href="../html/Panier.html"><img src="../image/panier.png" alt="icone-panier"></a><a href="../html/Mon compte.html"><img src="../image/compte.png" alt="icone-compte"></a> </li>
+            <li><a href="../html/Accueil.html">Accueil</a></li>
+            <li><a href="../html/OmnesBox.html">Ma OmnesBox</a></li>
+            <li><a href="../html/carte-cadeau.html">Carte cadeau</a></li>
+            <li><a href="../html/Panier.html"><img src="../image/panier.png" alt="icone-panier"></a><a
+                    href="../html/Mon compte.html"><img src="../image/compte.png" alt="icone-compte"></a></li>
         </ol>
     </nav>
     <div id="ligne"></div>
 
 </header>
 <section>
+    <div id="contenaire-new-carte">
+        <img id="image-carte-1" src="../image/carte-cadeau.png" alt="carte cadeau">
+        <form method="post" id="form-new-carte">
+
+            <label for="numcarte1"></label>
+            <input class="texte" type="number" id="numcarte1" name="numcarte1" required>
+            <label for="numcarte2"></label>
+            <input class="texte" type="number" id="numcarte2" name="numcarte2" required>
+
+
+            <input class="boutton" type="button" value="&#9205">
+
+        </form>
+    </div>
+    <div>
+        <h2>Mes OmnesBox</h2>
+        <div class="contenaire-carte">
+            <img class="image-carte" src="../image/carte-cadeau.png" alt="carte cadeau">
+            <h3 class="titre-carte">Carte Cadeau Anniversaire</h3>
+            <div class="contenaire-prix">
+                <p class="euro">€</p>
+                <p class="prix">200</p>
+            </div>
+            <input type="submit" class="boutton2" value="Utiliser">
+        </div>
+    </div>
 
 </section>
 <footer>
-    <a href="../html/Accueil.html" ><img src="../image/logo%20site.png" alt="logo" class="logo"></a>
+    <a href="../html/Accueil.html"><img src="../image/logo%20site.png" alt="logo" class="logo"></a>
     <p>Created by Le Quellec, Chaperon, Fornier, Bouroullec</p>
 </footer>
 </body>
