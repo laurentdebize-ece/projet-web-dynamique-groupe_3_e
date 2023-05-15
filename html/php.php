@@ -2,7 +2,7 @@
 
 try {
     // Connexion à la base de données MySQL
-    $bdd = new PDO('mysql:host=localhost;dbname=omnesbox;charset=utf8', 'root', '');
+    $bdd = new PDO('mysql:host=localhost;dbname=myomnesbox;charset=utf8', 'root', 'root');
     // Définition du mode d'erreur de PDO sur Exception
     $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (Exception $e) {
@@ -21,8 +21,15 @@ if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) &&
     // Vérification que les champs obligatoires sont remplis
     if (!empty($nom) && !empty($prenom) && !empty($adresse_mail) && !empty($mot_de_passe)) {
         // Requête SQL pour insérer les données dans la table utilisateur
-        $insertion = "INSERT INTO utilisateur (ID_utilisateur,Nom, Prenom, Adresse_mail, Mot_de_passe, Statut, panier) VALUES ('6','$nom', '$prenom', '$adresse_mail', '$mot_de_passe', '$statut', '4')";
+        $insertion = "INSERT INTO utilisateur (Nom, Prenom, Adresse_mail, Mot_de_passe, Statut, Panier) VALUES ('$nom', '$prenom', '$adresse_mail', '$mot_de_passe', '$statut',0)";
         $bdd->query($insertion);
+
+        // Récupérer l'ID de l'utilisateur inséré
+        $id_utilisateur = $bdd->lastInsertId();
+
+        // Mettre à jour la colonne "panier" avec l'ID de l'utilisateur inséré
+        $update = "UPDATE utilisateur SET panier = $id_utilisateur WHERE ID_utilisateur = $id_utilisateur";
+        $bdd->query($update);
 
         // Affichage d'un message de confirmation
         echo "<h1>Résultats</h1>";
