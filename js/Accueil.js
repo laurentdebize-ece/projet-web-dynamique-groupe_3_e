@@ -36,7 +36,7 @@ $(document).ready(function(){
             $('#ligne2-3').css({backgroundColor :'#5f5f5f'});
             $('#ligne2-2').css({backgroundColor :'#5f5f5f'});
             $('#ligne2-1').css({backgroundColor :'white'});
-            $('#carte').animate({left :'36%'});
+            $('#carte').animate({left :'37%'});
             $('#image-carte-1').animate({height :'271px',width :'430px'});
             $('#image-carte-2').animate({height :'196px',width :'310px'});
             $('#image-carte-3').animate({height :'196px',width :'310px'});

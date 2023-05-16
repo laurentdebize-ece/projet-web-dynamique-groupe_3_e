@@ -72,14 +72,15 @@
         <section>
         <div id="div1">
             <div class="centrer"> <img src="../image/compte2.png" alt="icone-compte"></div>
-            <h1>'. $_SESSION["Nom"] . '  ' . $_SESSION["Prenom"] . '</h1>
+            <h1>' . $_SESSION["Nom"] . '  ' . $_SESSION["Prenom"] . '</h1>
             <div class="mail-mp"><p class="intituler" >Adresse-mail :  </p><p class="donner" > ' . $_SESSION["Adresse_mail"] . '</p></div>
-            <div class="mail-mp"><p class="intituler" >Mot de passe :  </p><p class="donner"> '  . $_SESSION["Mot_de_passe"] . '</p></div>
+            <div class="mail-mp"><p class="intituler" >Mot de passe :  </p><p class="donner"> ' . $_SESSION["Mot_de_passe"] . '</p></div>
             <div class="mail-mp"><p class="intituler" >Statut :  </p><p class="donner"> ' . $_SESSION["Statut"] . '</p></div>
-        </div>
-        <form action="" method="post">
+             <form action="" method="post">
             <input name="boutton-deconnexion" class="boutton" type="submit" value="Se déconnecter">
         </form>
+        </div>
+       
         </section>
         ';
         if(isset($_POST['boutton-deconnexion'])){
