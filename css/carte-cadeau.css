@@ -1,8 +1,8 @@
 body{
-    background: black;
-    color: white;
-    padding-bottom: 60px;
-    position: relative;
+    background: black !important;
+    color: white !important;
+    padding-bottom: 60px !important;
+    position: relative !important;
 }
 header{
     margin-left: 1.25%;
@@ -42,12 +42,66 @@ nav ol a img{
     background: white;
 }
 footer{
-    position: absolute;
-    bottom: 0;
+    position: absolute !important;
+    bottom: 0 !important;
     padding-left: 1.25%;
     padding-right: 1.25%;
     height: 60px;
     width: 90%;
     display: flex;
     justify-content: space-between;
+}
+.image{
+    height: 202px;
+    width: 322px;
+}
+.contenaire-prix {
+    display: flex;
+    background: white;
+    color: black;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.prix {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: bold;
+}
+
+.euro {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-right: 10px;
+    font-weight: bold;
+}
+.contenaire-all-prix{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 30px;
+    padding-left: 30px;
+    position: relative;
+    bottom: 60px;
+    visibility: hidden;
+}
+.contenaire-all-carte{
+    width: max-content;
+    text-align: center;
+}
+.titre{
+    margin: 0;
+    font-size: 20px;
+}
+#contenaire-all-carte{
+    padding: 50px;
+}
+.contenaire-carte:hover .contenaire-all-prix{
+    visibility: visible;
+}
+.contenaire-prix:hover{
+    background: #d3ae37;
 }
