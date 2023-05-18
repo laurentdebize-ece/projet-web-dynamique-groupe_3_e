@@ -1,6 +1,9 @@
 body{
     background: black !important;
     color: white !important;
+    overflow: hidden;
+    padding-bottom: 60px;
+    position: relative;
 }
 header{
     margin-left: 1.25%;
@@ -40,15 +43,16 @@ nav ol a img{
     background: white;
 }
 footer{
-    margin-left: 1.25%;
-    margin-right: 1.25%;
+    position: absolute;
+    bottom: 0;
+    padding-left: 1.25%;
+    padding-right: 1.25%;
     height: 60px;
+    width: 90%;
     display: flex;
     justify-content: space-between;
 }
-footer p{
-    float: right;
-}
+
 section h1{
     margin-left: 1%;
 }
