@@ -9,7 +9,7 @@
         
     } else {
         // Rediriger l'utilisateur vers la page de son compte
-        header("Location: ../php/Mon%20compte%20connecte.php");
+        header("Location: ../php/Mon_compte_connecte.php");
         
 } 
 ?>
