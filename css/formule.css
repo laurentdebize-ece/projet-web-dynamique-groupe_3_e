@@ -1,0 +1,111 @@
+body{
+
+    background: black !important;
+    color: white !important;
+    overflow-x: hidden;
+    padding-bottom: 60px;
+    position: relative;
+
+}
+header{
+    z-index: 6;
+
+    margin-left: 1.25%;
+    margin-right: 1.25%;
+    height: 60px;
+}
+header nav {
+    float: right;
+    width: 30%;
+    margin-right: 1.25%;
+    height: 100%;
+
+}
+header nav ol{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+
+}
+nav ol a{
+    color: white;
+    text-decoration: none;
+}
+header nav li{
+    top:15px;
+    position: relative;
+
+}
+nav ol a img{
+    height: 35px;
+    width: 35px;
+}
+
+.logo{
+    position: relative;
+    height: 56px;
+    width: 250px;
+}
+#icone{
+    display: flex;
+    justify-content: space-between;
+}
+#menu{
+    position: relative;
+    padding-top: 15%;
+    left: 110px;
+}
+.petite-ligne{
+    height: 2px;
+    width: 30px;
+    margin-bottom: 5px;
+    background: white;
+    transition: transform 0.2s ease-in-out;
+}
+#ligne{
+    height: 2px;
+    width: 100%;
+    background: white;
+}
+footer{
+    position: absolute;
+    bottom: 0;
+    padding-left: 1.25%;
+    padding-right: 1.25%;
+    height: 60px;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+  }
+  
+  table th,
+  table td {
+    padding: 0.5rem;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+  }
+  
+  table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+  }
+  
+  .boutton{
+    border-radius: 20px;
+    height: 40px;
+    width: 136px;
+    margin-top: 20px;
+}
+#ajout-panier{
+    border: 0;
+    background: #d3ae37;
+}

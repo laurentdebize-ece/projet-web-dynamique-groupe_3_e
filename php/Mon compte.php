@@ -7,7 +7,7 @@
 
     
     //identifier BDD
-    $database = "myomnesbox";
+    $database = "myomnesbox2";
     
     //connectez-vous dans BDD
     $db_handle = mysqli_connect('localhost', 'root', '');
