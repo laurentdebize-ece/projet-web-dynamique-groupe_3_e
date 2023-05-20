@@ -15,7 +15,7 @@
             <ol>
                 <li> <a href="../html/Accueil.html">Accueil</a> </li>
                 <li> <a href="../html/OmnesBox.html">Ma OmnesBox</a> </li>
-                <li> <a href="../html/carte-cadeau.html">Carte cadeau</a> </li>
+                <li> <a href="../html/carte_cadeau.html">Carte cadeau</a> </li>
                 <li> <a href="../html/Panier.html"><img src="../image/panier.png" alt="icone-panier"></a><a href="../php/redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a> </li>
             </ol>
         </nav>
@@ -39,12 +39,16 @@
                 <p class="intituler">Statut : </p>
                 <p class="donner">   <?php echo($_SESSION["Statut"]); ?></p>
             </div>
+            <div class="centrer">
+                <form action="" method="post">
+                    <input name="boutton-deconnexion" id="boutton-connexion" class="boutton" type="submit" value="Se déconnecter">
+                    <?php if($_SESSION["Statut"] === 'Administrateur'){ ?>
+                    <a href="espace-admin.php"><input name="boutton-admin" class="boutton" type="button" value="Espace Admin"></a>
+                    <?php } ?>
+                </form>
+            </div>
         </div>
-        <div class="centrer">
-        <form action="" method="post">
-            <input name="boutton-deconnexion" id="boutton-connexion" class="boutton" type="submit" value="Se déconnecter">
-        </form>
-        </div>
+
         <?php
         if(isset($_POST["boutton-deconnexion"])){
             session_destroy();
