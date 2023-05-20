@@ -152,3 +152,42 @@ section {
     border: none;
     background: #d3ae37;
 }
+.centrer{
+    width: 100%;
+}
+#contenaire-point-interrogation{
+    background: white;
+    color:black;
+    width: 20px;
+    height: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    bottom: 270px;
+    left: 180px;
+    opacity: 50%;
+}
+#texte-explicatif{
+    background: white;
+    height: max-content;
+    border-radius: 0 5px 5px 5px;
+    width: 100px;
+    color: black;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    position: relative;
+    bottom: 270px;
+    left: 240px;
+    opacity: 0;
+    padding: 1px;
+}
+#contenaire-point-interrogation:hover{
+    opacity: 1;
+}
+#contenaire-point-interrogation:hover + #texte-explicatif{
+    opacity: 80%;
+}
+
