@@ -35,8 +35,8 @@
                     <input class="texte" type="password" id="mp" name="mp" required><br>
                     <input id="boutton-connexion" class="boutton" type="submit" value="Se connecter">
             </form>
-                    <form action="../html/creer-compte.html" method="post">
-                        <input name="boutton-creer-compte"class="boutton" type="submit" value="Créer un compte">
+                    <form action="formulaire%20creer%20compte.php" method="post">
+                        <input name="boutton-creer-compte" class="boutton" type="submit" value="Créer un compte">
                     </form>
                     
 

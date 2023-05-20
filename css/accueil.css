@@ -264,3 +264,8 @@ color: #d3ae37;
     padding-left: 15%;
     border-right: #d3ae37 5px solid;
 }
+.nom-prenom-client:hover{
+    color: #d3ae37;
+    border: #d3ae37 solid;
+    border-radius: 50% ;
+}

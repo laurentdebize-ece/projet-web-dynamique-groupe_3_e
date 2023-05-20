@@ -14,7 +14,7 @@
             <li> <a href="../html/Accueil.html">Accueil</a> </li>
             <li> <a href="../html/OmnesBox.html">Ma OmnesBox</a> </li>
             <li> <a href="../html/carte-cadeau.html">Carte cadeau</a> </li>
-            <li> <a href="../html/Panier.html"><img src="../image/panier.png" alt="icone-panier"></a><a href="../php/redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a> </li>
+            <li> <a href="../html/Panier.html"><img src="../image/panier.png" alt="icone-panier"></a><a href="redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a> </li>
         </ol>
     </nav>
     <div id="ligne"></div>
@@ -23,15 +23,23 @@
 <section>
     <div id="div1">
         <h1> Créer mon compte</h1>
-        <form method="post" name="form" action="php.php">
+        <form method="post" name="form" action="creer%20compte.php">
             <label for="nom" id="surname"> Nom : </label><br>
             <div class="centrer"><input class="texte" type="text" name="nom" id="nom" style="text-transform: uppercase;" required><br></div>
 
             <label for="prenom" id="name"> Prénom : </label><br>
             <div class="centrer"><input class="texte" type="text" name="prenom" id="prenom" style="text-transform: capitalize;" required><br></div>
 
-            <label for="statut2" id="statut"> Statut : </label><br>
-            <div class="centrer"><input class="texte" type="text" name="statut" id="statut2" required><br></div>
+<?php
+$boutton = $_POST["boutton-creer-compte"];
+if ($boutton === "+"){
+    $statut = "Partenaire";
+}
+else{
+    $statut = "Client";
+}
+?>
+            <div class="centrer"><input class="texte" type="text" name="statut" id="statut2" value="<?php echo $statut; ?>" style="display: none"></div>
 
             <label for="email" id="mail">Adresse mail : </label><br>
             <div class="centrer"><input class="texte" type="email" name="email" id="email" required><br></div>

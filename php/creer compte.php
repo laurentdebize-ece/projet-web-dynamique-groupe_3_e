@@ -36,7 +36,7 @@ if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) &&
         // Redirection vers la page de connexion
         header("Location: ../php/Mon%20compte%20non%20connecte.php");
     } else {
-        header("Location: ../html/creer-compte.html");
+        header("Location: ../html/formulaire creer compte.php");
     }
 } else {
     echo "<h1>Erreur</h1>";
