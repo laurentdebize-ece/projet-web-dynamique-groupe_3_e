@@ -16,10 +16,11 @@
     <nav>
         <ol>
             <li><a href="../html/Accueil.html">Accueil</a></li>
-            <li><a href="../html/OmnesBox.html">Ma OmnesBox</a></li>
+            <li><a href="OmnesBox.php">Ma OmnesBox</a></li>
             <li><a href="../php/carte_cadeau.php">Carte cadeau</a></li>
-            <li><a href="../html/Panier.html"><img src="../image/panier.png" alt="icone-panier"></a><a
-                    href="../php/redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a></li>
+            <li><a href="Panier.php"><img src="../image/panier.png" alt="icone-panier"></a><a
+                        href="../php/redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a>
+            </li>
         </ol>
     </nav>
     <div id="ligne"></div>
@@ -27,57 +28,53 @@
 </header>
 
 <?php
-    // Connexion à la base de données
-    $database = "myomnesbox2";
-    $db_handle = mysqli_connect('localhost', 'root', '');
-    $db_found = mysqli_select_db($db_handle, $database);
-    $NomPrecedent = "vide";
+try {
+    // Connexion à la base de données MySQL
+    $bdd = new PDO('mysql:host=localhost;dbname=myomnesbox;charset=utf8', 'root', '');
+    // Définition du mode d'erreur de PDO sur Exception
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (Exception $e) {
+    // Affichage de l'erreur en cas d'échec de la connexion
+    die('Erreur : ' . $e->getMessage());
+}
+
 ?>
 
 <section>
     <div id="contenaire-all-carte">
         <div class="row">
             <?php
-            if ($db_found) {
-                // Requête pour récupérer les activités
-                $sql = "SELECT * FROM _activite";
-                $result = mysqli_query($db_handle, $sql);
-                $row = mysqli_fetch_assoc($result);
-                
-                while ($row != false) {
-                    $nextRow = mysqli_fetch_assoc($result);
-                    $nom = $row['Nom'];
-                    $montant = $row['Prix'];
-                    $activite_id = $row['ID_activite'];
-                    if($nom != $NomPrecedent){
-                        echo '<div class="col-sm-4">
-                                <div class="contenaire-carte">
-                                    <img class="image" src="../image/carte-cadeau.png" alt="carte cadeau">
-                                    <div class="contenaire-all-prix"> ';
-                    }
-            
-                    echo '              <div class="contenaire-prix">
-                                            <p class="euro">€</p>
-                                            <form action="../php/formule.php" method="post">
-                                                <input type="hidden" name="activite_id" value="' . $activite_id . '">
-                                                <input type="submit" value="' . $montant . '">
-                                            </form>
-                                        </div>';
-                                   
-                    if($nextRow == false  || $nextRow['Nom'] != $nom)  {
-                        echo '
-                                    </div>
-                                </div>
-                            <h3 class="titre"><?php echo $nom; ?></h3>
-                            </div>';
-                    }
-                    $NomPrecedent = $nom;
-                    $row = $nextRow;
-                }
-                // Fermeture de la connexion à la base de données
-                mysqli_close($db_handle);
-            }
-            ?>
+
+            // Requête pour récupérer les activités
+            $reponse = $bdd->query('SELECT DISTINCT Nom FROM _activite ORDER BY Nom');
+
+            while ($row = $reponse->fetch()) {
+                $nom = $row['Nom'];
+                ?>
+                <div class="col-sm-4">
+                    <div class="contenaire-carte">
+                        <img class="image" src="../image/carte-cadeau.png" alt="carte cadeau">
+                        <div class="contenaire-all-prix">
+                            <?php
+                            $reponse2 = $bdd->query('SELECT * FROM _activite WHERE Nom ="' . $nom . '"ORDER BY Prix');
+                            while ($row2 = $reponse2->fetch()) {
+                                $activite_id = $row2["ID_activite"];
+                                $montant = $row2["Prix"];
+                                ?>
+
+
+                                <form action="../php/formule.php" method="post">
+                                    <input type="hidden" name="activite_id" value="<?php echo $activite_id; ?>">
+                                    <input class="boutton" type="submit" value="€ <?php echo $montant; ?>">
+                                </form>
+
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <h3 class="titre"><?php echo $nom; ?></h3>
+                </div>
+
+            <?php } ?>
         </div>
     </div>
 </section>

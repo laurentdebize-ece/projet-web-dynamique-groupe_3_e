@@ -11,7 +11,11 @@ try {
     die('Erreur : ' . $e->getMessage());
 }
 
-if ($_SESSION["Statut"] === 'Administrateur') {
+if ($_SESSION["Statut"] === 'Partenaire') {
+    $ID = $_SESSION["ID"];
+    $reponse = $bdd->query('SELECT ID_magasin_partenaire FROM _magasin_partenaire WHERE ID_utilisateur="' . $ID . '"');
+    $donnees = $reponse->fetch();
+    $ID_m = $donnees['ID_magasin_partenaire'];
     ?>
     <!DOCTYPE html>
     <html lang="fr">
@@ -30,7 +34,7 @@ if ($_SESSION["Statut"] === 'Administrateur') {
             <ol>
                 <li><a href="../html/Accueil.html">Accueil</a></li>
                 <li><a href="OmnesBox.php">Ma OmnesBox</a></li>
-                <li><a href="../html/carte-cadeau.html">Carte cadeau</a></li>
+                <li><a href="../php/carte_cadeau.php">Carte cadeau</a></li>
                 <li><a href="Panier.php"><img src="../image/panier.png" alt="icone-panier"></a><a
                             href="redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a></li>
             </ol>
@@ -41,93 +45,56 @@ if ($_SESSION["Statut"] === 'Administrateur') {
     <section>
         <div id="client" class="contenaire">
             <div class="contenaire-titre">
-                <h2 class="titre">Client </h2>
-                <p>&#9207</p>
-            </div>
-            <div class="contenu">
-                <?php
-                $reponse = $bdd->query("SELECT * FROM _utilisateur WHERE Statut = 'Client'");
-
-                while ($donnees = $reponse->fetch()) { ?>
-                    <div class="nom-client-partenaire">
-                        <p>
-                            <?php echo $donnees['Nom']; ?>
-                            <?php echo $donnees['Prenom']; ?>
-                        </p>
-
-                    </div>
-
-                <?php } ?>
-
-
-            </div>
-        </div>
-
-        <div id="client" class="contenaire">
-            <div class="contenaire-titre">
-                <h2 class="titre">Partenaire</h2>
-                <p>&#9207</p>
-            </div>
-            <div class="contenu">
-                <?php
-                $reponse = $bdd->query("SELECT * FROM _utilisateur WHERE Statut = 'Partenaire'");
-
-                while ($donnees = $reponse->fetch()) { ?>
-                    <form action="espace-admin-partenaire.php" method="post">
-                        <input type="submit" name="entreprise" class="nom-client-partenaire"
-                               value="<?php echo $donnees['Nom']; ?>">
-                    </form>
-
-
-                <?php } ?>
-
-                <form action="formulaire%20creer%20compte.php" method="post">
-                    <input type="submit" name="boutton-creer-compte" class="nom-client-partenaire" value="+"
-                           style="color: green;font-size: 20px">
-                </form>
-            </div>
-
-        </div>
-
-        <div id="client" class="contenaire">
-            <div class="contenaire-titre">
-                <h2 class="titre">Activités</h2>
+                <h2 class="titre">Vos Activités</h2>
                 <p>&#9207</p>
             </div>
             <div class="contenu">
                 <table>
                     <tr>
-                        <th>Nom</th>
+                        <th>Nom <?php echo $ID_m; ?></th>
                         <th>Prix</th>
                         <th>description</th>
                     </tr>
                     <?php
-                    $reponse = $bdd->query("SELECT * FROM _activite");
-
+                    $reponse = $bdd->query('SELECT DISTINCT ID_activite FROM _formule WHERE ID_magasin_partenaire="' . $ID_m . '"');
                     while ($donnees = $reponse->fetch()) {
                         $id = $donnees['ID_activite'];
-                        $nom = $donnees['Nom'];
-                        $prix = $donnees['Prix'];
-                        $description = $donnees['Description'];
+                        $reponse2 = $bdd->query('SELECT * FROM _activite WHERE ID_activite="' . $id . '"');
+                        $donnees2 = $reponse2->fetch();
+
+                        $nom = $donnees2['Nom'];
+                        $prix = $donnees2['Prix'];
+                        $description = $donnees2['Description'];
 
                         ?>
                         <tr>
                             <td><?php echo $nom; ?></td>
                             <td><?php echo $prix; ?></td>
                             <td><?php echo $description; ?></td>
-                            <td class="td-modifier">
-                                <form action="../php/espace-admin-new-activite.php" method="post">
-                                    <input type="text" name="id" value="<?php echo $id ?>" style="display: none">
-                                    <input class="modifier" type="submit" value="modifier la ligne">
-                                </form>
-                            </td>
-
                         </tr>
+
                     <?php } ?>
                     <tr>
                         <td colspan="3" class="td-modifier">
                             <form action="../php/espace-admin-new-activite.php" method="post">
-                                <input type="text" name="id" value="-1" style="display: none">
+                                <select id="nom" name="nom" class="texte">
+                                    <?php
+                                    $reponse = $bdd->query('SELECT _activite.ID_activite FROM _activite
+LEFT JOIN _formule on _activite.ID_activite = _formule.ID_activite
+LEFT JOIN _magasin_partenaire ON _magasin_partenaire.ID_magasin_partenaire = _formule.ID_magasin_partenaire
+WHERE NOT _formule.ID_magasin_partenaire = "' . $ID_m . '" OR _formule.ID_magasin_partenaire is null');
+                                    while ($donnees = $reponse->fetch()) {
+                                        $id = $donnees['ID_activite'];
+                                        $reponse4 = $bdd->query('SELECT * FROM _activite WHERE ID_activite="' . $id . '"');
+                                        $donnees4 = $reponse4->fetch(); ?>
+
+                                        <option
+                                                value="<?php echo $donnees4['ID_activite']; ?>"><?php echo $donnees4['Nom']; ?>
+                                            -<?php echo $donnees4['Prix']; ?>
+                                        </option>
+                                    <?php } ?>
+                                </select>
+                                <input type="hidden" name="id" value="<?php echo $ID_m; ?>">
                                 <input class="modifier" type="submit" value="+">
                             </form>
                         </td>
@@ -142,7 +109,7 @@ if ($_SESSION["Statut"] === 'Administrateur') {
 
         <div id="client" class="contenaire">
             <div class="contenaire-titre">
-                <h2 class="titre">Formules</h2>
+                <h2 class="titre">Vos Formules</h2>
                 <p>&#9207</p>
             </div>
             <div class="contenu">
@@ -150,7 +117,6 @@ if ($_SESSION["Statut"] === 'Administrateur') {
                     <tr>
                         <th>Nom</th>
                         <th>Prix</th>
-                        <th>Magasin</th>
                         <th>description</th>
                     </tr>
                     <?php
@@ -163,30 +129,24 @@ if ($_SESSION["Statut"] === 'Administrateur') {
 
                         $id_m = $donnees['ID_magasin_partenaire'];
                         $id_A = $donnees['ID_activite'];
+                        if ($id_m === $ID_m) {
 
-                        $reponse2 = $bdd->query('SELECT * FROM _activite WHERE ID_activite ="' . $id_A . '"');
+                            $reponse2 = $bdd->query('SELECT * FROM _activite WHERE ID_activite ="' . $id_A . '"');
 
-                        $donnees2 = $reponse2->fetch();
-                        $nom = $donnees2['Nom'];
-                        $prix = $donnees2['Prix'];
+                            $donnees2 = $reponse2->fetch();
+                            $nom = $donnees2['Nom'];
+                            $prix = $donnees2['Prix'];
 
-                        $reponse3 = $bdd->query('SELECT * FROM _magasin_partenaire WHERE ID_magasin_partenaire ="' . $id_m . '"');
-                        $donnees3 = $reponse3->fetch();
+                            $reponse3 = $bdd->query('SELECT * FROM _magasin_partenaire WHERE ID_magasin_partenaire ="' . $id_m . '"');
+                            $donnees3 = $reponse3->fetch();
 
-                        $magasin = $donnees3['Nom'];
-                        ?>
-                        <tr>
-                            <td><?php echo $nom; ?></td>
-                            <td><?php echo $prix; ?></td>
-                            <td><?php echo $magasin; ?></td>
-                            <td><?php echo $description; ?></td>
-                            <td class="td-modifier">
-                                <form action="../php/espace-admin-new-formule.php" method="post">
-                                    <input type="text" name="id" value="<?php echo $id ?>" style="display: none">
-                                    <input class="modifier" type="submit" value="modifier la ligne">
-                                </form>
-                            </td>
-                        </tr>
+                            ?>
+                            <tr>
+                                <td><?php echo $nom; ?></td>
+                                <td><?php echo $prix; ?></td>
+                                <td><?php echo $description; ?></td>
+                            </tr>
+                        <?php } ?>
                     <?php } ?>
                     <tr>
                         <td colspan="4" class="td-modifier">

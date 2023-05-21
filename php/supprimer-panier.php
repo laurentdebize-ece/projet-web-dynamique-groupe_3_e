@@ -1,8 +1,4 @@
 <?php
-
-
-session_start();
-
 try {
     // Connexion à la base de données MySQL
     $bdd = new PDO('mysql:host=localhost;dbname=myomnesbox;charset=utf8', 'root', '');
@@ -12,14 +8,9 @@ try {
     // Affichage de l'erreur en cas d'échec de la connexion
     die('Erreur : ' . $e->getMessage());
 }
-$ID_activite =$_POST["nom"];
-/*$Nom
-$Prix
-$Description*/
+$id = $_POST['id'];
+echo $id;
+$reponse = $bdd->query('DELETE FROM _carte WHERE ID_carte ="' . $id . '"');
 
-$reponse = $bdd->query('INSERT INTO _activite (ID_activite, Nom, Prix, Description) VALUES (20, le quellec, 10, teste)');
-$donnees = $reponse->fetch();
-
-header("Location: ../php/espace-partenaire.php");
-
+header("Location: ../php/Panier.php");
 ?>

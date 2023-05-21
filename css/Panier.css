@@ -1,15 +1,17 @@
-body{
+body {
     background: black !important;
     color: white !important;
     overflow: hidden;
     padding-bottom: 60px;
     position: relative;
 }
-header{
+
+header {
     margin-left: 1.25%;
     margin-right: 1.25%;
     height: 60px;
 }
+
 nav {
     float: right;
     width: 30%;
@@ -17,7 +19,8 @@ nav {
     height: 100%;
 
 }
-nav ol{
+
+nav ol {
     list-style: none;
     display: flex;
     justify-content: space-between;
@@ -25,24 +28,29 @@ nav ol{
     padding: 0;
 
 }
-nav ol a{
+
+nav ol a {
     color: white;
     text-decoration: none;
 }
-nav ol a img{
+
+nav ol a img {
     height: 35px;
     width: 35px;
 }
-.logo{
+
+.logo {
     height: 56px;
     width: 250px;
 }
-#ligne{
+
+#ligne {
     height: 2px;
     width: 100%;
     background: white;
 }
-footer{
+
+footer {
     position: absolute;
     bottom: 0;
     padding-left: 1.25%;
@@ -53,74 +61,120 @@ footer{
     justify-content: space-between;
 }
 
-section h1{
+section h1 {
     margin-left: 1%;
 }
-h2{
-    font-size: 20px;
-    color: inherit;
-    text-decoration: none;
 
-}
-.contenu , .titre-produit,.titre-produit div{
-    display: flex;
-
-}
-.contenu{
-    display: flex;
-    margin-left: 1%;
-    margin-right: 1%;
-
-}
-.contenu1{
-    width: 70%;
-    padding-right: 5%;
-}
-.ligne1{
-    height: 2px;
-    width: 100%;
-    background: white;
-}
-#texte-produit{
-    margin-right: 55%;
-}
-
-.titre-produit{
-    margin-left: 1%;
-    margin-right: 1%;
-}
-.titre-produit div h2{
-    margin-right: 20%;
-    white-space: nowrap;
-}
-#recapitulatif{
+#recapitulatif {
+    width: 20%;
+    height: max-content;
     background: #e4e4e4;
     border-radius: 20px;
     padding: 30px;
     text-align: center;
 }
-#recapitulatif h2{
+
+#recapitulatif h2 {
     margin-top: 0;
 
 }
-#recapitulatif h3{
+
+#recapitulatif h3 {
     font-size: 15px;
 
 }
-.ligne2{
+
+.ligne2 {
     background: black;
     height: 1px;
-    width:100%;
+    width: 100%;
 }
-#prix-total{
+
+#prix-total {
     display: flex;
     justify-content: space-between;
 }
-.boutton{
+
+.boutton {
     border-radius: 20px;
     height: 40px;
     width: 136px;
     margin-top: 20px;
     border: 0;
     background: #d3ae37;
+}
+
+.contenu {
+    display: flex;
+    width: 100%;
+}
+
+table {
+    margin-right: 5%;
+    width: 70%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+thead {
+    border-bottom: white solid 1px;
+    border-top: white solid 1px;
+}
+
+thead th:nth-child(1) {
+    width: 50%;
+}
+
+.poubelle {
+    height: 50px;
+    width: 43px;
+}
+
+tbody td:nth-child(1) {
+    display: flex;
+
+
+}
+
+tbody td:nth-child(1) p {
+    margin: auto;
+    padding: 5px;
+
+}
+
+.image {
+    margin: 5px;
+    height: 151px;
+    width: 241px;
+}
+
+.contenaire-nombre {
+    text-align: center;
+    display: flex;
+    background: white;
+    color: black;
+    height: max-content;
+    width: max-content;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.nombre {
+    padding: 5px;
+    margin: 0;
+}
+
+.boutton-nombre {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    margin: auto;
+    background: white;
+    border: none;
+
+}
+
+.boutton-nombre:hover {
+    background: #d3ae37;
+
 }

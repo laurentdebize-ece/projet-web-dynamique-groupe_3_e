@@ -7,11 +7,12 @@
 
     
     //identifier BDD
-    $database = "myomnesbox2";
+    $database = "myomnesbox";
     
     //connectez-vous dans BDD
-    $db_handle = mysqli_connect('localhost', 'root', 'root');
+    $db_handle = mysqli_connect('localhost', 'root', '');
     $db_found = mysqli_select_db($db_handle, $database);
+
 
     //si le BDD existe, faire le traitement
     if($db_found){
@@ -36,7 +37,7 @@
             $_SESSION["Nom"] = $data['Nom'];
             $_SESSION["Prenom"] = $data['Prenom'];
             $_SESSION["Statut"] = $data['Statut'];
-            
+            echo "connecter";
 
             header("Location: ../php/Mon_compte_connecte.php");
         }    

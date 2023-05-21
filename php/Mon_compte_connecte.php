@@ -14,9 +14,9 @@
         <nav>
             <ol>
                 <li> <a href="../html/Accueil.html">Accueil</a> </li>
-                <li> <a href="../html/OmnesBox.html">Ma OmnesBox</a> </li>
+                <li> <a href="OmnesBox.php">Ma OmnesBox</a> </li>
                 <li> <a href="../html/carte_cadeau.html">Carte cadeau</a> </li>
-                <li> <a href="../html/Panier.html"><img src="../image/panier.png" alt="icone-panier"></a><a href="../php/redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a> </li>
+                <li> <a href="Panier.php"><img src="../image/panier.png" alt="icone-panier"></a><a href="../php/redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a> </li>
             </ol>
         </nav>
         <div id="ligne"></div>
@@ -26,7 +26,7 @@
         <?php session_start(); ?>
         <div id="div1">
             <div class="centrer"> <img src="../image/compte2.png" alt="icone-compte"></div>
-            <h1> <?php echo($_SESSION["Nom"]);?>  <?php echo($_SESSION["Prenom"]);?></h1>
+            <h1> <?php echo($_SESSION["Nom"]);?>  <?php if ($_SESSION["Statut"] != 'Partenaire'){echo($_SESSION["Prenom"]);}?></h1>
             <div class="mail-mp">
                 <p class="intituler">Adresse-mail : </p>
                 <p class="donner">   <?php echo($_SESSION["Adresse_mail"]); ?></p>
@@ -44,6 +44,9 @@
                     <input name="boutton-deconnexion" id="boutton-connexion" class="boutton" type="submit" value="Se déconnecter">
                     <?php if($_SESSION["Statut"] === 'Administrateur'){ ?>
                     <a href="espace-admin.php"><input name="boutton-admin" class="boutton" type="button" value="Espace Admin"></a>
+                    <?php } ?>
+                    <?php if($_SESSION["Statut"] === 'Partenaire'){ ?>
+                        <a href="espace-partenaire.php"><input name="boutton-part" class="boutton" type="button" value="Espace Partenaire"></a>
                     <?php } ?>
                 </form>
             </div>

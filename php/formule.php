@@ -11,14 +11,14 @@
 </head>
 <body>
 <header>
-    <a href="../html/Accueil.html"  ><img id="logo" src="../image/logo%20site.png" alt="logo" class="logo"></a>
+    <a href="../html/Accueil.html"><img id="logo" src="../image/logo%20site.png" alt="logo" class="logo"></a>
     <nav>
         <ol>
             <li id="accueil"><a href="../html/Accueil.html">Accueil</a></li>
-            <li id="omnesbox"><a href="../html/OmnesBox.html">Ma OmnesBox</a></li>
+            <li id="omnesbox"><a href="OmnesBox.php">Ma OmnesBox</a></li>
             <li id="carte-cadeau"><a href="../php/carte_cadeau.php">Carte cadeau</a></li>
-            <li id="icone"><a href="../html/Panier.html"><img src="../image/panier.png" alt="icone-panier"></a><a
-                    href="../php/redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a>
+            <li id="icone"><a href="Panier.php"><img src="../image/panier.png" alt="icone-panier"></a><a
+                        href="../php/redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a>
                 <div id="menu">
                     <div class="petite-ligne" id="petite-ligne-1"></div>
                     <div class="petite-ligne" id="petite-ligne-2"></div>
@@ -31,59 +31,60 @@
 </header>
 
 <body>
-    
+
 <?php
-// Connexion à la base de données
-$database = "myomnesbox2";
-$db_handle = mysqli_connect('localhost', 'root', '');
-$db_found = mysqli_select_db($db_handle, $database);
-
-if ($db_found) {
-    // Récupération de l'ID de l'activité sélectionnée
-    if (isset($_POST['activite_id'])) {
-        
-        $idActivite = $_POST['activite_id'];
-        // Requête pour récupérer les formules selon l'ID de l'activité
-        $sql = "SELECT * FROM _activite JOIN _formule ON _activite.ID_activite = _formule.ID_activite WHERE _activite.ID_activite = $idActivite";
-        $result = mysqli_query($db_handle, $sql);
-        
-        // Vérification des résultats de la requête
-        if ($result && mysqli_num_rows($result) > 0) {
-            // Affichage des formules
-            echo '<table>';
-            $activite = 0;
-            while ($row = mysqli_fetch_assoc($result)) {
-                if($activite == 0){
-                    echo '<h1>'.$row['DescriptioN'].'</h1>';
-                    $activite = 1;
-                }
-                $idFormule = $row['ID_formule'];
-                $descriptionFormule = $row['Description'];
-                echo '
-                    <tr>
-                        <td>'.$descriptionFormule.'</td>
-                        <td><form action="../php/carte_cadeau.php" method="post" id="ajout-panier-form">
-                            <input name="ajout-panier" id="ajout-panier" class="boutton" type="submit" value="Ajouter au panier">
-                            </form>
-                        </td>
-                    </tr>';
-            }
-            echo '</table>';
-        } else {
-            echo "Aucune formule trouvée.";
-        }
-    }
-
-    // Fermeture de la connexion à la base de données
-    mysqli_close($db_handle);
+try {
+    // Connexion à la base de données MySQL
+    $bdd = new PDO('mysql:host=localhost;dbname=myomnesbox;charset=utf8', 'root', '');
+    // Définition du mode d'erreur de PDO sur Exception
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (Exception $e) {
+    // Affichage de l'erreur en cas d'échec de la connexion
+    die('Erreur : ' . $e->getMessage());
 }
+
+
+// Récupération de l'ID de l'activité sélectionnée
+if (isset($_POST['activite_id'])) {
+
+    $idActivite = $_POST['activite_id'];
+    // Requête pour récupérer les formules selon l'ID de l'activité
+    $reponse = $bdd->query('SELECT * FROM _activite LEFT JOIN _formule ON _activite.ID_activite = _formule.ID_activite WHERE _activite.ID_activite ="' . $idActivite . '"');
+    ?>
+    <table>
+        <tr>
+            <th>description</th>
+        </tr>
+        <?php
+        while ($donnees = $reponse->fetch()) {
+            $description = $donnees["Description"];
+
+            ?>
+            <tr>
+                <td><?php echo $description ;?></td>
+                <td>
+                    <form action="../php/ajout-carte.php" method="post" id="ajout-panier-form">
+                        <input type="hidden" name="id_formule" value="<?php echo $donnees["ID_formule"] ;?>">
+                        <input type="hidden" name="prix" value="<?php echo $donnees["Prix"] ;?>">
+                        <input name="ajout-panier" id="ajout-panier" class="boutton" type="submit"
+                               value="Ajouter au panier">
+                    </form>
+                </td>
+            </tr>
+            <?php
+        }
+        ?></table> <?php
+
+}
+
+
 
 ?>
 </body>
 
 
 <footer>
-    <a href="../html/Accueil.html" ><img src="../image/logo%20site.png" alt="logo" class="logo"></a>
+    <a href="../html/Accueil.html"><img src="../image/logo%20site.png" alt="logo" class="logo"></a>
     <p>Created by Le Quellec, Chaperon, Fornier, Bouroullec</p>
 </footer>
 </body>

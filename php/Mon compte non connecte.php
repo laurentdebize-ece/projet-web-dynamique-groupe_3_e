@@ -14,9 +14,9 @@
         <nav>
             <ol>
                 <li> <a href="../html/Accueil.html">Accueil</a> </li>
-                <li> <a href="../html/OmnesBox.html">Ma OmnesBox</a> </li>
+                <li> <a href="OmnesBox.php">Ma OmnesBox</a> </li>
                 <li> <a href="../html/carte_cadeau.html">Carte cadeau</a> </li>
-                <li> <a href="../html/Panier.html"><img src="../image/panier.png" alt="icone-panier"></a><a href="../php/redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a> </li>
+                <li> <a href="Panier.php"><img src="../image/panier.png" alt="icone-panier"></a><a href="../php/redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a> </li>
             </ol>
         </nav>
         <div id="ligne"></div>

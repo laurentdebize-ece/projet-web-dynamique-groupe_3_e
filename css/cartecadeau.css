@@ -55,7 +55,7 @@ footer{
     height: 202px;
     width: 322px;
 }
-.contenaire-prix {
+.boutton {
     display: flex;
     background: white;
     color: black;
@@ -65,19 +65,12 @@ footer{
     border-radius: 20px;
     margin-top: auto;
     margin-bottom: auto;
+    font-weight: bold;
+    border: none;
 }
 
-.prix {
-    margin-top: auto;
-    margin-bottom: auto;
-    font-weight: bold;
-}
-
-.euro {
-    margin-top: auto;
-    margin-bottom: auto;
-    padding-right: 10px;
-    font-weight: bold;
+.contenaire-carte{
+    width: max-content;
 }
 .contenaire-all-prix{
     display: flex;
@@ -102,6 +95,6 @@ footer{
 .contenaire-carte:hover .contenaire-all-prix{
     visibility: visible;
 }
-.contenaire-prix:hover{
+.boutton:hover{
     background: #d3ae37;
 }

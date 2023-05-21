@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,9 +13,9 @@
     <nav>
         <ol>
             <li><a href="Accueil.html">Accueil</a></li>
-            <li><a href="OmnesBox.html">Ma OmnesBox</a></li>
+            <li><a href="../php/OmnesBox.php">Ma OmnesBox</a></li>
             <li><a href="../php/carte_cadeau.php">Carte cadeau</a></li>
-            <li><a href="Panier.html"><img src="../image/panier.png" alt="icone-panier"></a><a
+            <li><a href="../php/Panier.php"><img src="../image/panier.png" alt="icone-panier"></a><a
                     href="../php/redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a></li>
         </ol>
     </nav>
@@ -23,7 +24,7 @@
 </header>
 <section>
     <div id="div1">
-        <form method="post" name="form">
+        <form method="post" name="form" action="../php/achat.php" >
 
             <label for="numcarte" id="numeroCarte"> N° de carte</label><br>
             <input  type="number" name="numcarte" id="numcarte" placeholder="XXXX XXXX XXXX XXXX"  required><br>

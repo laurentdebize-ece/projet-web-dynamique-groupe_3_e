@@ -1,3 +1,15 @@
+<?php
+session_start();
+try {
+    // Connexion à la base de données MySQL
+    $bdd = new PDO('mysql:host=localhost;dbname=myomnesbox;charset=utf8', 'root', '');
+    // Définition du mode d'erreur de PDO sur Exception
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (Exception $e) {
+// Affichage de l'erreur en cas d'échec de la connexion
+    die('Erreur : ' . $e->getMessage());
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,18 +23,10 @@
     <a href="../html/Accueil.html"><img src="../image/logo%20site.png" alt="logo" class="logo"></a>
     <nav>
         <ol>
-<<<<<<< HEAD
             <li> <a href="../html/Accueil.html">Accueil</a> </li>
-            <li> <a href="../html/OmnesBox.html">Ma OmnesBox</a> </li>
-            <li> <a href="../html/carte-cadeau.html">Carte cadeau</a> </li>
-            <li> <a href="../html/Panier.html"><img src="../image/panier.png" alt="icone-panier"></a><a href="../php/redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a> </li>
-=======
-            <li><a href="../html/Accueil.html">Accueil</a></li>
-            <li><a href="../html/OmnesBox.html">Ma OmnesBox</a></li>
-            <li><a href="../php/carte_cadeau.php">Carte cadeau</a></li>
-            <li><a href="../html/Panier.html"><img src="../image/panier.png" alt="icone-panier"></a><a
-                    href="../php/redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a></li>
->>>>>>> 57f8459b67bf5c257c287be6ed49627526e2d058
+            <li> <a href="OmnesBox.php">Ma OmnesBox</a> </li>
+            <li> <a href="../php/carte_cadeau.php">Carte cadeau</a> </li>
+            <li> <a href="Panier.php"><img src="../image/panier.png" alt="icone-panier"></a><a href="redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a> </li>
         </ol>
     </nav>
     <div id="ligne"></div>
@@ -53,27 +57,27 @@
     </div>
     <div>
         <h2>Mes OmnesBox</h2>
+        <?php
+        $reponse = $bdd->query('SELECT * FROM _carte WHERE ((ID_utilisateur ="' . $_SESSION["ID"] . '" AND ID_utilisateur__beneficie IS NULL) OR ID_utilisateur__beneficie ="' . $_SESSION["ID"] . '") AND Panier = 0 ');
+
+        while ($donnees = $reponse->fetch()) {
+            $reponse2 = $bdd->query('SELECT * FROM _formule WHERE ID_formule ="' . $donnees["ID_formule"] . '" ');
+            $donnees2 = $reponse2->fetch();
+        ?>
         <div class="contenaire-carte">
             <img class="image-carte" src="../image/carte-cadeau.png" alt="carte cadeau">
-            <h3 class="titre-carte">Carte Cadeau Anniversaire</h3>
+            <h3 class="titre-carte"><?php echo $donnees2["Description"];?></h3>
             <div class="contenaire-prix">
                 <p class="euro">€</p>
-                <p class="prix">200</p>
+                <p class="prix"><?php echo $donnees["Prix"];?></p>
             </div>
-            <input type="submit" class="boutton2" value="Utiliser">
+            <form>
+                <input type="hidden" name="id-carte" value="<?php echo $donnees["ID_carte"]; ?>">
+                <input type="submit" class="boutton2" value="Utiliser">
+            </form>
         </div>
-        <div class="contenaire-carte">
-            <img class="image-carte" src="../image/carte-cadeau.png" alt="carte cadeau">
-            <h3 class="titre-carte">Carte Cadeau Anniversaire</h3>
-            <div class="contenaire-prix">
-                <p class="euro">€</p>
-                <p class="prix">200</p>
-            </div>
-            <input type="submit" class="boutton2" value="Utiliser">
-        </div>
+        <?php } ?>
     </div>
-
-
 </section>
 <footer>
     <a href="../html/Accueil.html"><img src="../image/logo%20site.png" alt="logo" class="logo"></a>

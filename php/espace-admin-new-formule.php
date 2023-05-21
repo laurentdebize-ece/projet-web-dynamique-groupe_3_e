@@ -54,9 +54,9 @@ if ($id === "-1") {
     <nav>
         <ol>
             <li><a href="../html/Accueil.html">Accueil</a></li>
-            <li><a href="../html/OmnesBox.html">Ma OmnesBox</a></li>
+            <li><a href="OmnesBox.php">Ma OmnesBox</a></li>
             <li><a href="../html/carte-cadeau.html">Carte cadeau</a></li>
-            <li><a href="../html/Panier.html"><img src="../image/panier.png" alt="icone-panier"></a><a
+            <li><a href="Panier.php"><img src="../image/panier.png" alt="icone-panier"></a><a
                         href="redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a></li>
         </ol>
     </nav>
