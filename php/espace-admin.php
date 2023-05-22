@@ -30,7 +30,7 @@ if ($_SESSION["Statut"] === 'Administrateur') {
             <ol>
                 <li><a href="../html/Accueil.html">Accueil</a></li>
                 <li><a href="OmnesBox.php">Ma OmnesBox</a></li>
-                <li><a href="../html/carte-cadeau.html">Carte cadeau</a></li>
+                <li><a href="../php/carte_cadeau.php">Carte cadeau</a></li>
                 <li><a href="Panier.php"><img src="../image/panier.png" alt="icone-panier"></a><a
                             href="redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a></li>
             </ol>
@@ -49,13 +49,11 @@ if ($_SESSION["Statut"] === 'Administrateur') {
                 $reponse = $bdd->query("SELECT * FROM _utilisateur WHERE Statut = 'Client'");
 
                 while ($donnees = $reponse->fetch()) { ?>
-                    <div class="nom-client-partenaire">
-                        <p>
-                            <?php echo $donnees['Nom']; ?>
-                            <?php echo $donnees['Prenom']; ?>
-                        </p>
-
-                    </div>
+                    <form action="espace-admin-client.php" class="nom-client-partenaire" method="post">
+                    <input type="hidden" name="id" value="<?php echo $donnees['ID_utilisateur']; ?>">
+                    <input type="submit" name="entreprise" class="nom-client-partenaire"
+                           value="<?php echo $donnees['Nom']; ?> <?php echo $donnees['Prenom']; ?>">
+                    </form>
 
                 <?php } ?>
 

@@ -1,8 +1,11 @@
+html{
+    height: 100%;
+}
 body {
-    background: black !important;
-    color: white !important;
-    overflow: hidden;
-    padding-bottom: 60px;
+    background: black;
+    color: white;
+    padding-bottom: 100px;
+    font-family: 'Playfair Display', serif !important;
     position: relative;
 }
 
@@ -50,7 +53,7 @@ nav ol a img {
     background: white;
 }
 
-footer {
+footer{
     position: absolute;
     bottom: 0;
     padding-left: 1.25%;
@@ -60,12 +63,12 @@ footer {
     display: flex;
     justify-content: space-between;
 }
-
 section h1 {
     margin-left: 1%;
 }
 
 #recapitulatif {
+    color: black;
     width: 20%;
     height: max-content;
     background: #e4e4e4;
@@ -114,11 +117,18 @@ table {
     width: 70%;
     text-align: center;
     border-collapse: collapse;
+    border-bottom: white solid 1px;;
 }
 
 thead {
+   font-size: 20px;
     border-bottom: white solid 1px;
     border-top: white solid 1px;
+
+}
+thead th{
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 thead th:nth-child(1) {
@@ -143,7 +153,7 @@ tbody td:nth-child(1) p {
 }
 
 .image {
-    margin: 5px;
+    margin: 20px;
     height: 151px;
     width: 241px;
 }
@@ -153,15 +163,17 @@ tbody td:nth-child(1) p {
     display: flex;
     background: white;
     color: black;
-    height: max-content;
+    height: 25px;
     width: max-content;
     padding: 5px;
-    border-radius: 10px;
+    border-radius: 20px;
+    margin: auto;
 }
 
 .nombre {
-    padding: 5px;
-    margin: 0;
+
+    margin: auto;
+
 }
 
 .boutton-nombre {

@@ -15,6 +15,7 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
     <head>
         <meta charset="UTF-8">
         <title>Panier</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display">
         <link rel="stylesheet" href="../css/Panier.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script src="../js/Panier.js"></script>
@@ -63,7 +64,7 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
                 $reponse = $bdd->query('SELECT * FROM _carte WHERE ID_utilisateur ="' . $_SESSION["ID"] . '" AND Panier = 1 ');
 
                 while ($donnees = $reponse->fetch()) {
-                    $reponse2 = $bdd->query('SELECT * FROM _formule WHERE ID_formule ="' . $donnees["ID_formule"] . '" ');
+                    $reponse2 = $bdd->query('SELECT * FROM _activite WHERE ID_activite ="' . $donnees["ID_activite"] . '" ');
                     $donnees2 = $reponse2->fetch();
 
                     ?>
@@ -71,10 +72,10 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
                     <tr class="produit">
                         <td><img class="image" src="../image/carte-cadeau.png">
                             <p><?php echo $donnees2["Description"]; ?></p></td>
-                        <td class="prix"><?php echo $donnees["Prix"]; ?></td>
+                        <td class="prix"><?php echo $donnees["Prix"]; ?> €</td>
                        <!-- <td><input class="nombre" type="number" name="nombre" value="1"></td>-->
                         <td><div class="contenaire-nombre"><input class="boutton-nombre" value="-" type="button" ><p class="nombre">1</p><input class="boutton-nombre" type="button" value="+"></div></td>
-                        <td class="sous-totale"><?php echo $donnees["Prix"]; ?></td>
+                        <td class="sous-totale"><?php echo $donnees["Prix"]; ?> €</td>
                         <td>
                             <form action="../php/supprimer-panier.php" method="post">
                                 <input type="hidden" name="id" value="<?php echo $donnees["ID_carte"]; ?>">
