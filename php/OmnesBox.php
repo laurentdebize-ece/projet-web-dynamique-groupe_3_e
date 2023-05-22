@@ -1,23 +1,45 @@
 <?php
 session_start();
-try {
-    // Tentative de connexion à la base de données MySQL (MAMP)
-    $bdd = new PDO('mysql:host=localhost;dbname=myomnesbox;charset=utf8', 'root', '');
-    // Définition du mode d'erreur de PDO sur Exception
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
+if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
+
+    // Rediriger l'utilisateur vers la page de connexion
+    header("Location: ../php/Mon%20compte%20non%20connecte.php");
+    exit();
+} else {
     try {
-        // Tentative de connexion à la base de données MySQL (WAMP)
-        $bdd = new PDO('mysql:host=localhost;dbname=myomnesbox;charset=utf8', 'root', 'root');
+        // Tentative de connexion à la base de données MySQL (MAMP)
+        $bdd = new PDO('mysql:host=localhost;dbname=myomnesbox;charset=utf8', 'root', '');
         // Définition du mode d'erreur de PDO sur Exception
         $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $e) {
-        // Gestion de l'erreur de connexion
-        echo "Erreur de connexion à la base de données : " . $e->getMessage();
-        exit();
+        try {
+            // Tentative de connexion à la base de données MySQL (WAMP)
+            $bdd = new PDO('mysql:host=localhost;dbname=myomnesbox;charset=utf8', 'root', 'root');
+            // Définition du mode d'erreur de PDO sur Exception
+            $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            // Gestion de l'erreur de connexion
+            echo "Erreur de connexion à la base de données : " . $e->getMessage();
+            exit();
+        }
+    }
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $ID_carte = $_POST['numcarte1'] . $_POST['numcarte2'];
+        $requeteVerifCarte = $bdd->prepare('SELECT * FROM _carte WHERE ID_carte = :id_carte AND ID_utilisateur__beneficie IS NULL');
+        $requeteVerifCarte->execute(array('id_carte' => $ID_carte));
+
+        if ($requeteVerifCarte->rowCount() > 0) {
+
+            $ID_utilisateur_beneficie = $_SESSION["ID"];
+
+            $requeteAttribuerCarte = $bdd->prepare('UPDATE _carte SET ID_utilisateur__beneficie = :beneficiaire WHERE ID_carte = :id_carte');
+            $requeteAttribuerCarte->execute(array('beneficiaire' => $ID_utilisateur_beneficie, 'id_carte' => $ID_carte));
+        }
     }
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -60,16 +82,18 @@ try {
             <input class="texte" type="number" id="numcarte2" name="numcarte2" required>
 
 
-            <input class="boutton" type="button" value="&#9205">
-
+            <input class="boutton" type="submit" value="&#9205">
+            
         </form>
+        
     </div>
+    
     <div>
         <h2>Mes OmnesBox</h2>
         <h3>Beneficier</h3>
         <?php
         $reponse = $bdd->query('SELECT * FROM _carte WHERE ((ID_utilisateur ="' . $_SESSION["ID"] . '" AND ID_utilisateur__beneficie IS NULL) 
-                                                           OR ID_utilisateur__beneficie ="' . $_SESSION["ID"] . '") ');
+                                                           OR ID_utilisateur__beneficie ="' . $_SESSION["ID"] . '") AND Panier = 0');
 
         while ($donnees = $reponse->fetch()) {
             $reponse2 = $bdd->query('SELECT * FROM _formule WHERE ID_formule ="' . $donnees["ID_formule"] . '" ');
