@@ -10,8 +10,16 @@
     $database = "myomnesbox";
     
     //connectez-vous dans BDD
-    $db_handle = mysqli_connect('localhost', 'root', '');
+    if ($_SERVER['SERVER_NAME'] == 'localhost') {
+        // Configuration pour MAMP
+        $db_handle = mysqli_connect('localhost', 'root', 'root');
+    } else {
+        // Configuration pour WAMP
+        $db_handle = mysqli_connect('localhost', 'root', '');
+    }
     $db_found = mysqli_select_db($db_handle, $database);
+
+    
 
 
     //si le BDD existe, faire le traitement
