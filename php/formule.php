@@ -57,7 +57,7 @@ if (isset($_POST['activite_id'])) {
 
     $idActivite = $_POST['activite_id'];
     // Requête pour récupérer les formules selon l'ID de l'activité
-    $reponse = $bdd->query('SELECT * FROM _activite LEFT JOIN _formule ON _activite.ID_activite = _formule.ID_activite WHERE _activite.ID_activite ="' . $idActivite . '"');
+    $reponse = $bdd->query('SELECT * FROM _activite WHERE _activite.ID_activite ="' . $idActivite . '"');
     ?>
     <table>
         <tr>
@@ -72,7 +72,7 @@ if (isset($_POST['activite_id'])) {
                 <td><?php echo $description ;?></td>
                 <td>
                     <form action="../php/ajout-carte.php" method="post" id="ajout-panier-form">
-                        <input type="hidden" name="id_formule" value="<?php echo $donnees["ID_formule"] ;?>">
+                        <input type="hidden" name="id_activite" value="<?php echo $donnees["ID_activite"] ;?>">
                         <input type="hidden" name="prix" value="<?php echo $donnees["Prix"] ;?>">
                         <input name="ajout-panier" id="ajout-panier" class="boutton" type="submit"
                                value="Ajouter au panier">

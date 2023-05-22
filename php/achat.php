@@ -17,7 +17,8 @@ try {
         exit();
     }
 }
-$reponse = $bdd->query('UPDATE _carte SET Panier = 0 WHERE ID_utilisateur ="' . $_SESSION["ID"] . '" AND Panier = 1 ');
+$dt = time();
+$reponse = $bdd->query('UPDATE _carte SET Panier = 0 , Date_achat ="' . date( "Y-m-d", $dt) . '" WHERE ID_utilisateur ="' . $_SESSION["ID"] . '" AND Panier = 1 ');
 
 header("Location: ../html/Accueil.html");
 ?>

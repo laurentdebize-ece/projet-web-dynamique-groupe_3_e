@@ -36,7 +36,7 @@ $(document).ready(function () {
         }
         $(this).parent().children(".nombre").text(prix);
         let totale = parseInt($(this).parent().parent().parent().children(".prix").text()) * prix;
-        $(this).parent().parent().parent().children(".sous-totale").text(totale);
+        $(this).parent().parent().parent().children(".sous-totale").text(""+ totale+" €");
         calcul_prix_total();
         calcul_nb_articles();
     });

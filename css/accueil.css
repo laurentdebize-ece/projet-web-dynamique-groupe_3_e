@@ -6,6 +6,7 @@ body{
     overflow-x: hidden;
     padding-bottom: 60px;
     position: relative;
+    font-family: 'Playfair Display', serif !important;
 
 }
 header{
@@ -117,10 +118,10 @@ section{
 #carte{
     position: relative;
     display: flex;
-    padding-top: 200px;
+    padding-top: 150px;
     width: 120%;
     left: 37%;
-    margin-bottom: 2%;
+    margin-bottom: 0;
     justify-content: space-between;
 }
 #image-carte-1{

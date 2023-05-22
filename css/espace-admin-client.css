@@ -2,9 +2,10 @@ html{
     height: 100%;
 }
 body {
-    background: black !important;
-    color: white !important;
-    padding-bottom: 60px;
+    background: black;
+    color: white;
+    padding-bottom: 100px;
+    font-family: 'Playfair Display', serif !important;
     position: relative;
 }
 
@@ -62,50 +63,70 @@ footer{
     display: flex;
     justify-content: space-between;
 }
-.image{
-    height: 202px;
-    width: 322px;
-}
-.boutton {
-    display: flex;
-    background: white;
-    color: black;
-    height: 30px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 20px;
-    margin-top: auto;
-    margin-bottom: auto;
-    font-weight: bold;
-    border: none;
+section{
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-.contenaire-carte{
-    width: max-content;
+.contenu {
+    display: none;
 }
-.contenaire-all-prix{
+
+.contenaire-titre {
     display: flex;
-    justify-content: space-between;
-    padding-right: 30px;
-    padding-left: 30px;
-    position: relative;
-    bottom: 60px;
-    visibility: hidden;
-}
-.contenaire-all-carte{
     width: max-content;
+
+}
+
+.contenaire-titre p {
+    padding-top: 5px;
+    height: 5px;
+    position: relative;
+
+}
+
+
+table {
+    margin-right: 5%;
+    width: 100%;
     text-align: center;
+    border-collapse: collapse;
+    border-bottom: white solid 1px;;
 }
-.titre{
-    margin: 0;
+
+thead {
     font-size: 20px;
+    border-bottom: white solid 1px;
+    border-top: white solid 1px;
+
 }
-#contenaire-all-carte{
-    padding: 50px;
+thead th{
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
-.contenaire-carte:hover .contenaire-all-prix{
-    visibility: visible;
+
+thead th:nth-child(1) {
+    width: 50%;
 }
-.boutton:hover{
-    background: #d3ae37;
+
+tbody td:nth-child(1) {
+    display: flex;
+
+
 }
+
+tbody td:nth-child(1) p {
+    margin: auto;
+    padding: 5px;
+
+}
+
+.image {
+    margin: 20px;
+    height: 151px;
+    width: 241px;
+}
+
+
+
+

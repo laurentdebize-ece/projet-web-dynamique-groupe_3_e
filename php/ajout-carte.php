@@ -9,7 +9,7 @@ if(!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false){
 
 } else {
 
-    $id_formule = $_POST['id_formule'];
+    $id_activite = $_POST['id_activite'];
     $prix = $_POST['prix'];
 
     try {
@@ -29,7 +29,7 @@ if(!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false){
             exit();
         }
     }
-    $reponse = $bdd->query('INSERT INTO _carte (Prix, ID_utilisateur, ID_formule, Panier) VALUES ("' . $prix . '", "' . $_SESSION["ID"] . '", "' . $id_formule . '", 1)');
+    $reponse = $bdd->query('INSERT INTO _carte (Prix, ID_utilisateur, ID_activite, Panier) VALUES ("' . $prix . '", "' . $_SESSION["ID"] . '", "' . $id_activite . '", 1)');
 
     header("Location: ../html/Accueil.html");
 
