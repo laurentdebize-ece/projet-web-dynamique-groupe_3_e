@@ -18,7 +18,7 @@
     if($db_found){
         //echo 'BDD trouvée <br>';
         $sql = "SELECT * FROM _utilisateur WHERE Adresse_mail = '$adresse_mail' AND Mot_de_passe = '$mot_de_passe'";
-        $result = mysqli_query($db_handle, $sql);
+        $result = mysqli_query($db_handle, $sql); 
         $data = mysqli_fetch_assoc($result);
         //regarder s'il y a de résultat
         
