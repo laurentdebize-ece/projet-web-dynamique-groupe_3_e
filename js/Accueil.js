@@ -42,9 +42,9 @@ $(document).ready(function(){
             $('#image-carte-3').animate({height :'196px',width :'310px'});
 
             $('#ligne').animate({width :'100%'});
-            $('#accueil').animate({top:'0px'});
-            $('#omnesbox').animate({top:'0px'});
-            $('#carte-cadeau').animate({top:'0px'});
+            $('#accueil').animate({top:'15px'});
+            $('#omnesbox').animate({top:'15px'});
+            $('#carte-cadeau').animate({top:'15px'});
             $('#logo').animate({height :'56px',width :'250px',top:'0', left:'0'});
             $('#menu').animate({left:'100px'});
            

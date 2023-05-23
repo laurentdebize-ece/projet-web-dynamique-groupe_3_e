@@ -85,8 +85,8 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
 </div>
 
 <div>
-    <h2>Mes OmnesBox</h2>
-    <h3>Beneficier</h3>
+    <h2>Ma OmnesBox</h2>
+    <h3>Mes cartes cadeaux à utiliser :</h3>
 
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -117,7 +117,7 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
     }
 
     ?>
-    <h3>Acheter</h3>
+    <h3>Mes cartes cadeaux achetées :</h3>
     <?php
     /*$reponse = $bdd->query('SELECT * FROM _carte WHERE ((ID_utilisateur ="' . $_SESSION["ID"] . '" AND ID_utilisateur__beneficie IS NULL) OR ID_utilisateur__beneficie ="' . $_SESSION["ID"] . '") AND Panier = 0 ');*/
     $reponse = $bdd->query('SELECT * FROM _carte WHERE (ID_utilisateur ="' . $_SESSION["ID"] . '" AND ID_utilisateur__beneficie IS NULL) AND Panier = 0 ');
