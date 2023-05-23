@@ -126,7 +126,7 @@ if ($_SESSION["Statut"] === 'Partenaire') {
                     <?php } ?>
                     <tr>
                         <td colspan="3" class="td-modifier">
-                            <form action="../php/espace-admin-new-activite.php" method="post">
+                            <form action="../php/espace-partenaire-new-activite.php" method="post">
                                 <select id="nom" name="nom" class="texte">
                                     <?php
                                     $reponse = $bdd->query('SELECT _activite.ID_activite FROM _activite
@@ -138,14 +138,14 @@ WHERE NOT _formule.ID_magasin_partenaire = "' . $ID_m . '" OR _formule.ID_magasi
                                         $reponse4 = $bdd->query('SELECT * FROM _activite WHERE ID_activite="' . $id . '"');
                                         $donnees4 = $reponse4->fetch(); ?>
 
-                                        <option
-                                                value="<?php echo $donnees4['ID_activite']; ?>"><?php echo $donnees4['Nom']; ?>
-                                            -<?php echo $donnees4['Prix']; ?>
-                                        </option>
+                                        <!--<option
+                                                value="<?php //echo $donnees4['ID_activite']; ?>"><?php //echo $donnees4['Nom']; ?>
+                                            -<?php //echo $donnees4['Prix']; ?>
+                                        </option>-->
                                     <?php } ?>
                                 </select>
                                 <input type="hidden" name="id" value="<?php echo $ID_m; ?>">
-                                <input class="modifier" type="submit" value="+">
+                                <!--<input class="modifier" type="submit" value="+">-->
                             </form>
                         </td>
 
