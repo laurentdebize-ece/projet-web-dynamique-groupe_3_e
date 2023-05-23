@@ -99,6 +99,11 @@ footer{
 .titre{
     margin: 0;
     font-size: 20px;
+    position: relative;
+    bottom: 130px;
+    left: 125px;
+    color: black;
+
 }
 #contenaire-all-carte{
     padding: 50px;
