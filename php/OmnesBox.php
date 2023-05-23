@@ -66,37 +66,37 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
 <section>
     <div id="contenaire-new-carte">
         <img id="image-carte-1" src="../image/carte-cadeau.png" alt="carte cadeau">
-        <div class="centrer">
-            <div id="contenaire-point-interrogation">
-                <p>?</p>
-            </div>
-            <div id="texte-explicatif">
-                <p>texte explicatif</p>
-            </div>
-        </div>
-        <form method="post" id="form-new-carte">
+<div class="centrer">
+<div id="contenaire-point-interrogation">
+<p>?</p>
+</div>
+<div id="texte-explicatif">
+<p>texte explicatif</p>
+</div>
+</div>
+<form method="post" id="form-new-carte">
+<label for="numcarte1"></label>
+        <input class="texte" type="number" id="numcarte1" name="numcarte1" required>
 
-            <label for="numcarte1"></label>
-            <input class="texte" type="number" id="numcarte1" name="numcarte1" required>
-            
+        <input class="boutton" type="submit" value="&#9205">
 
+    </form>
 
-            <input class="boutton" type="submit" value="&#9205">
-            
-        </form>
-        
-    </div>
-    
-    <div>
-        <h2>Mes OmnesBox</h2>
-        <h3>Beneficier</h3>
-        <?php
+</div>
+
+<div>
+    <h2>Mes OmnesBox</h2>
+    <h3>Beneficier</h3>
+
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         $reponse = $bdd->query('SELECT * FROM _carte WHERE ((ID_utilisateur ="' . $_SESSION["ID"] . '" AND ID_utilisateur__beneficie IS NULL) 
-                                                           OR ID_utilisateur__beneficie ="' . $_SESSION["ID"] . '") AND Panier = 0');
+        OR ID_utilisateur__beneficie ="' . $_SESSION["ID"] . '") AND Panier = 0');
 
         while ($donnees = $reponse->fetch()) {
             $reponse2 = $bdd->query('SELECT * FROM _formule WHERE ID_formule ="' . $donnees["ID_formule"] . '" ');
             $donnees2 = $reponse2->fetch();
+            var_dump($donnees2);
             ?>
             <div class="contenaire-carte">
                 <img class="image-carte" src="../image/carte-cadeau.png" alt="carte cadeau">
@@ -105,32 +105,35 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
                     <p class="euro">€</p>
                     <p class="prix"><?php echo $donnees["Prix"]; ?></p>
                 </div>
-                
+
                 <form action="../php/carte_utilise.php" method="post">
                     <input type="hidden" name="id-carte" value="<?php echo $donnees["ID_carte"]; ?>">
                     <input type="submit" class="boutton2" value="Utiliser">
                 </form>
             </div>
-        <?php } ?>
-        <h3>Acheter</h3>
-        <?php
-        /*$reponse = $bdd->query('SELECT * FROM _carte WHERE ((ID_utilisateur ="' . $_SESSION["ID"] . '" AND ID_utilisateur__beneficie IS NULL) OR ID_utilisateur__beneficie ="' . $_SESSION["ID"] . '") AND Panier = 0 ');*/
-        $reponse = $bdd->query('SELECT * FROM _carte WHERE (ID_utilisateur ="' . $_SESSION["ID"] . '" AND ID_utilisateur__beneficie IS NULL) AND Panier = 0 ');
-        while ($donnees = $reponse->fetch()) {
-            $reponse2 = $bdd->query('SELECT * FROM _activite WHERE ID_activite ="' . $donnees["ID_activite"] . '" ');
-            $donnees2 = $reponse2->fetch();
-            ?>
-            <div class="contenaire-carte">
-                <img class="image-carte" src="../image/carte-cadeau.png" alt="carte cadeau">
-                <h3 class="titre-carte"><?php echo $donnees2["Description"]; ?></h3>
-                <h3 class="titre-carte"><?php echo $donnees["Date_achat"]; ?></h3>
-                <div class="contenaire-prix">
-                    <p class="euro">€</p>
-                    <p class="prix"><?php echo $donnees["Prix"]; ?></p>
-                </div>
+        <?php }
+    }
+
+    ?>
+    <h3>Acheter</h3>
+    <?php
+    /*$reponse = $bdd->query('SELECT * FROM _carte WHERE ((ID_utilisateur ="' . $_SESSION["ID"] . '" AND ID_utilisateur__beneficie IS NULL) OR ID_utilisateur__beneficie ="' . $_SESSION["ID"] . '") AND Panier = 0 ');*/
+    $reponse = $bdd->query('SELECT * FROM _carte WHERE (ID_utilisateur ="' . $_SESSION["ID"] . '" AND ID_utilisateur__beneficie IS NULL) AND Panier = 0 ');
+    while ($donnees = $reponse->fetch()) {
+        $reponse2 = $bdd->query('SELECT * FROM _activite WHERE ID_activite ="' . $donnees["ID_activite"] . '" ');
+        $donnees2 = $reponse2->fetch();
+        ?>
+        <div class="contenaire-carte">
+            <img class="image-carte" src="../image/carte-cadeau.png" alt="carte cadeau">
+            <h3 class="titre-carte"><?php echo $donnees2["Description"]; ?></h3>
+            <h3 class="titre-carte"><?php echo $donnees["Date_achat"]; ?></h3>
+            <div class="contenaire-prix">
+                <p class="euro">€</p>
+                <p class="prix"><?php echo $donnees["Prix"]; ?></p>
             </div>
-        <?php } ?>
-    </div>
+        </div>
+    <?php } ?>
+</div>
 </section>
 <footer>
     <a href="../html/Accueil.html"><img src="../image/logo%20site.png" alt="logo" class="logo"></a>
