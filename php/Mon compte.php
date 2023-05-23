@@ -12,7 +12,7 @@
     //connectez-vous dans BDD
     if ($_SERVER['SERVER_NAME'] == 'localhost') {
         // Configuration pour MAMP
-        $db_handle = mysqli_connect('localhost', 'root', 'root');
+        $db_handle = mysqli_connect('localhost', 'root', '');
     } else {
         // Configuration pour WAMP
         $db_handle = mysqli_connect('localhost', 'root', '');

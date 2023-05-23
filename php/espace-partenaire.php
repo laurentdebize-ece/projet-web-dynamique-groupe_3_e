@@ -169,7 +169,7 @@ WHERE NOT _formule.ID_magasin_partenaire = "' . $ID_m . '" OR _formule.ID_magasi
                         <th>description</th>
                     </tr>
                     <?php
-                    $reponse = $bdd->query("SELECT * FROM _formule");
+                    $reponse = $bdd->query("SELECT * FROM _formule WHERE Acter = 1");
 
                     while ($donnees = $reponse->fetch()) {
 

@@ -101,16 +101,27 @@ if ($id === "-1") {
                     <?php } ?>
                 </select>
             </div>
+            <?php
 
+            if($_SESSION["Statut"] = "Partenaire"){
+                $reponse5 = $bdd->query('SELECT * FROM _magasin_partenaire WHERE ID_utilisateur ="' . $_SESSION['ID'] . '"');
+                $donnees5 = $reponse5->fetch();
+                ?>
 
+                <input type="hidden" id="nom" name="magasin" value="<?php  echo $donnees5['ID_magasin_partenaire']; ?>">
+            <?php }
+            else{ ?>
             <label for="magasin"> magasin : </label><br>
             <div class="centrer">
-                <select id="nom" name="magasin" class="texte">
+                <select type="hidden" id="nom" name="magasin" class="texte">
                     <?php
                     $reponse6 = $bdd->query('SELECT * FROM _magasin_partenaire');
                     while ($donnees6 = $reponse6->fetch()) { ?>
                         <option
-                            <?php if ($donnees6['Nom'] === $magasin) { ?>
+                            <?php if ($donnees6['Nom'] === $magasin ) { ?>
+                                selected="selected"
+                            <?php } ?>
+                            <?php if ($donnees6['ID_magasin_partenaire'] === $_SESSION["ID"] ) { ?>
                                 selected="selected"
                             <?php } ?>
                                 value="<?php echo $donnees6['ID_magasin_partenaire']; ?>"><?php echo $donnees6['Nom']; ?>
@@ -118,6 +129,11 @@ if ($id === "-1") {
                     <?php } ?>
                 </select>
             </div>
+
+            <?php } ?>
+
+
+
 
             <label for="description">Description : </label><br>
             <div class="centrer"><input class="texte" type="text" name="description"

@@ -158,6 +158,7 @@ if ($_SESSION["Statut"] === 'Administrateur') {
                         <th>Prix</th>
                         <th>Magasin</th>
                         <th>description</th>
+                        <th>Acter</th>
                     </tr>
                     <?php
                     $reponse = $bdd->query("SELECT * FROM _formule");
@@ -186,9 +187,20 @@ if ($_SESSION["Statut"] === 'Administrateur') {
                             <td><?php echo $prix; ?></td>
                             <td><?php echo $magasin; ?></td>
                             <td><?php echo $description; ?></td>
+                            <td><?php
+                                if($donnees["Acter"]){
+                                    echo "oui";
+                                }
+                                else{?>
+                                    <form action="../php/acter.php" method="post">
+                                        <input type="hidden" name="id" value="<?php echo $id ?>">
+                                        <input type="submit" name="bouton-acter" value="oui">
+                                        <input type="submit" name="bouton-acter" value="non">
+                                    </form>
+                               <?php }?></td>
                             <td class="td-modifier">
                                 <form action="../php/espace-admin-new-formule.php" method="post">
-                                    <input type="text" name="id" value="<?php echo $id ?>" style="display: none">
+                                    <input type="hidden" name="id" value="<?php echo $id ?>">
                                     <input class="modifier" type="submit" value="modifier la ligne">
                                 </form>
                             </td>
