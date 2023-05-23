@@ -23,7 +23,7 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
             exit();
         }
     }
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $ID_carte = $_POST['numcarte1'] . $_POST['numcarte2'];
         $requeteVerifCarte = $bdd->prepare('SELECT * FROM _carte WHERE ID_carte = :id_carte AND ID_utilisateur__beneficie IS NULL');
         $requeteVerifCarte->execute(array('id_carte' => $ID_carte));
@@ -54,7 +54,7 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
     <nav>
         <ol>
             <li><a href="../html/Accueil.html">Accueil</a></li>
-            <li><a href="OmnesBox.php">Ma OmnesBox</a></li>
+            <li><a href="../php/OmnesBox.php">Ma OmnesBox</a></li>
             <li><a href="../php/carte_cadeau.php">Carte cadeau</a></li>
             <li><a href="Panier.php"><img src="../image/panier.png" alt="icone-panier"></a><a
                         href="redirection_connexion.php"><img src="../image/compte.png" alt="icone-compte"></a></li>
@@ -106,7 +106,8 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
                     <p class="euro">€</p>
                     <p class="prix"><?php echo $donnees["Prix"]; ?></p>
                 </div>
-                <form>
+                
+                <form action="../php/carte_utilise.php" method="post">
                     <input type="hidden" name="id-carte" value="<?php echo $donnees["ID_carte"]; ?>">
                     <input type="submit" class="boutton2" value="Utiliser">
                 </form>

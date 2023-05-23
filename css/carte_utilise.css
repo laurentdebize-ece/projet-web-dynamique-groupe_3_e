@@ -1,0 +1,61 @@
+.contenaire-carte {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .image-carte {
+    width: 200px;
+    height: auto;
+  }
+  
+  .titre-carte {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  
+  .contenaire-prix {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .euro {
+    font-size: 16px;
+  }
+  
+  .prix {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0 5px;
+  }
+  
+  .formule-carte {
+    margin-top: 20px;
+  }
+  
+  .formule {
+    font-size: 18px;
+  }
+  
+  .magasin-partenaire {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .magasin {
+    width: 33.33%;
+    padding: 10px;
+    text-align: center;
+  }
+  .logo-zara{
+    width: 50px;
+    display: flex;
+  }
