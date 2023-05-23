@@ -10,29 +10,32 @@
     $database = "myomnesbox";
     
     //connectez-vous dans BDD
-    if ($_SERVER['SERVER_NAME'] == 'localhost') {
-        // Configuration pour MAMP
-        $db_handle = mysqli_connect('localhost', 'root', '');
-    } else {
-        // Configuration pour WAMP
-        $db_handle = mysqli_connect('localhost', 'root', '');
-    }
-    $db_found = mysqli_select_db($db_handle, $database);
 
-    
+    // Configuration pour WAMP
+    $db_handle = mysqli_connect('localhost', 'root', '');
+
+    $db_found = mysqli_select_db($db_handle, $database);
 
 
     //si le BDD existe, faire le traitement
     if($db_found){
         //echo 'BDD trouvée <br>';
         $sql = "SELECT * FROM _utilisateur WHERE Adresse_mail = '$adresse_mail' AND Mot_de_passe = '$mot_de_passe'";
-        $result = mysqli_query($db_handle, $sql); 
+        $result = mysqli_query($db_handle, $sql);
         $data = mysqli_fetch_assoc($result);
         //regarder s'il y a de résultat
         
         if(mysqli_num_rows($result) == 0){
+            echo '<script type="text/javascript">alert("Adresse mail ou mot de passe incorrect");</script>';
+            sleep(2);
             header("Location: ../php/Mon%20compte%20non%20connecte.php");
         } else {
+
+            //Regarder si l'utilisateur est un futur partenaire
+            if($data['Statut'] === "Futur Partenaire"){
+                header("Location: ../php/Modification%20mdp%20partenaire.php?id=".$data['ID_utilisateur']);
+                exit();
+            }
 
             // Commencer une nouvelle session
             session_start();
@@ -53,6 +56,7 @@
 
     }
     
+
     // Fermer la connexion à la base de données
     mysqli_close($db_handle);
 ?>

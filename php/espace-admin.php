@@ -87,7 +87,7 @@ if ($_SESSION["Statut"] === 'Administrateur') {
 
                 <?php } ?>
 
-                <form action="formulaire%20creer%20compte.php" method="post">
+                <form action="formulaire%20creer%20compte%20partenaire.php" method="post">
                     <input type="submit" name="boutton-creer-compte" class="nom-client-partenaire" value="+"
                            style="color: green;font-size: 20px">
                 </form>

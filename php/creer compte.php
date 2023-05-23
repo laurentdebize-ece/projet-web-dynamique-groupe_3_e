@@ -32,15 +32,11 @@ if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) &&
     // Vérification que les champs obligatoires sont remplis
     if (!empty($nomEnMajuscules) && !empty($prenomEnMajusculePremiereLettre) && !empty($adresse_mail) && !empty($mot_de_passe)) {
         // Requête SQL pour insérer les données dans la table utilisateur
-        $insertion = "INSERT INTO _utilisateur (Nom, Prenom, Adresse_mail, Mot_de_passe, Statut, Panier) VALUES ('$nomEnMajuscules', '$prenomEnMajusculePremiereLettre', '$adresse_mail', '$mot_de_passe', '$statut',0)";
+        $insertion = "INSERT INTO _utilisateur (Nom, Prenom, Adresse_mail, Mot_de_passe, Statut) VALUES ('$nomEnMajuscules', '$prenomEnMajusculePremiereLettre', '$adresse_mail', '$mot_de_passe', '$statut')";
         $bdd->query($insertion);
 
         // Récupérer l'ID de l'utilisateur inséré
         $id_utilisateur = $bdd->lastInsertId();
-
-        // Mettre à jour la colonne "panier" avec l'ID de l'utilisateur inséré
-        $update = "UPDATE _utilisateur SET panier = $id_utilisateur WHERE ID_utilisateur = $id_utilisateur";
-        $bdd->query($update);
 
         // Redirection vers la page de connexion
         header("Location: ../php/Mon%20compte%20non%20connecte.php");
