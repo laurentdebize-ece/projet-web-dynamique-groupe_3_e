@@ -30,7 +30,7 @@ if ($_SESSION["Statut"] === 'Partenaire') {
     <head>
         <meta charset="UTF-8">
         <title>Omnes BOX</title>
-        <link rel="stylesheet" href="../css/espace-admin.css">
+        <link rel="stylesheet" href="../css/espace-partenaire.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
         <script src="../js/espace-admin.js"></script>
 
@@ -53,13 +53,54 @@ if ($_SESSION["Statut"] === 'Partenaire') {
     <section>
         <div id="client" class="contenaire">
             <div class="contenaire-titre">
+                <h2 class="titre">Client </h2>
+                <p>&#9207</p>
+            </div>
+            <div class="contenu">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Produits</th>
+                        <th>Montant</th>
+                    </tr>
+                    </thead>
+                    <?php
+                    $reponse2 = $bdd->query('SELECT * FROM _carte WHERE NOT ID_utilisateur__beneficie IS NULL AND Panier = 0 ');
+
+                    while ($donnees2 = $reponse2->fetch()) {
+                        if ($donnees2["ID_formule"] != null) {
+                            $reponse3 = $bdd->query('SELECT * FROM _formule WHERE ID_formule="' . $donnees2["ID_formule"] . '"');
+                            $donnees3 = $reponse3->fetch();
+                            $id_m2 = $donnees3["ID_magasin_partenaire"];
+                            if ($ID_m === $id_m2) {
+                                ?>
+                                <tbody>
+                                <tr class="produit">
+                                    <td><img class="image" src="../image/carte-cadeau.png">
+
+                                        <p><?php $reponse4 = $bdd->query('SELECT * FROM _activite WHERE ID_activite="' . $donnees3["ID_activite"] . '"');
+                                            $donnees4 = $reponse4->fetch();
+                                            echo $donnees4["Nom"]; ?><br><br>
+                                            <?php echo $donnees3["Description"]; ?></p></td>
+                                    <td class="prix"><?php echo $donnees2["Prix"]; ?> €</td>
+                                </tr>
+                                </tbody>
+                                <?php
+                            }
+                        }
+                    }
+                    ?></table>
+            </div>
+        </div>
+        <div class="contenaire">
+            <div class="contenaire-titre">
                 <h2 class="titre">Vos Activités</h2>
                 <p>&#9207</p>
             </div>
             <div class="contenu">
                 <table>
                     <tr>
-                        <th>Nom <?php echo $ID_m; ?></th>
+                        <th>Nom</th>
                         <th>Prix</th>
                         <th>description</th>
                     </tr>
@@ -115,7 +156,7 @@ WHERE NOT _formule.ID_magasin_partenaire = "' . $ID_m . '" OR _formule.ID_magasi
 
         </div>
 
-        <div id="client" class="contenaire">
+        <div class="contenaire">
             <div class="contenaire-titre">
                 <h2 class="titre">Vos Formules</h2>
                 <p>&#9207</p>
@@ -128,7 +169,7 @@ WHERE NOT _formule.ID_magasin_partenaire = "' . $ID_m . '" OR _formule.ID_magasi
                         <th>description</th>
                     </tr>
                     <?php
-                    $reponse = $bdd->query("SELECT * FROM _formule");
+                    $reponse = $bdd->query("SELECT * FROM _formule WHERE Acter = 1");
 
                     while ($donnees = $reponse->fetch()) {
 

@@ -60,7 +60,7 @@ try {
                 ?>
                 <div class="col-sm-4">
                     <div class="contenaire-carte">
-                        <img class="image" src="../image/shopping.png" alt="carte cadeau">
+                        <img class="image" src="../image/cartedore.png" alt="carte cadeau">
                         <div class="contenaire-all-prix">
                             <?php
                             $reponse2 = $bdd->query('SELECT * FROM _activite WHERE Nom ="' . $nom . '"ORDER BY Prix');

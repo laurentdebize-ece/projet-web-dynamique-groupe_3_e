@@ -55,6 +55,7 @@ if ($_SESSION["Statut"] === 'Administrateur') {
                     <tr>
                         <th>Produits</th>
                         <th>Montant</th>
+
                     </tr>
                     </thead>
                     <?php
@@ -67,10 +68,10 @@ if ($_SESSION["Statut"] === 'Administrateur') {
                         // Affichage de l'erreur en cas d'échec de la connexion
                         die('Erreur : ' . $e->getMessage());
                     }
-                    $reponse = $bdd->query('SELECT * FROM _carte WHERE ID_utilisateur ="' . $ID . '" AND Panier = 0 ');
+                    $reponse = $bdd->query('SELECT * FROM _carte WHERE ID_utilisateur ="' . $ID . '"  AND Panier = 0 ');
 
                     while ($donnees = $reponse->fetch()) {
-                        $reponse2 = $bdd->query('SELECT * FROM _formule WHERE ID_formule ="' . $donnees["ID_formule"] . '" ');
+                        $reponse2 = $bdd->query('SELECT * FROM _activite WHERE ID_activite ="' . $donnees["ID_activite"] . '" ');
                         $donnees2 = $reponse2->fetch();
 
                         ?>
@@ -97,6 +98,7 @@ if ($_SESSION["Statut"] === 'Administrateur') {
                     <tr>
                         <th>Produits</th>
                         <th>Montant</th>
+                        <th>Magasin</th>
                     </tr>
                     </thead>
                     <?php
@@ -119,8 +121,33 @@ if ($_SESSION["Statut"] === 'Administrateur') {
                         <tbody>
                         <tr class="produit">
                             <td><img class="image" src="../image/carte-cadeau.png">
-                                <p><?php echo $donnees2["Description"]; ?></p></td>
+                                <p>
+                                    <?php
+                                    if($donnees["ID_formule"] === null){
+                                        $reponse3 = $bdd->query('SELECT * FROM _activite WHERE ID_activite ="' . $donnees["ID_activite"] . '" ');
+                                        $donnees3 = $reponse3->fetch();
+                                        echo $donnees3["Description"];
+                                    }
+                                    else{
+                                        echo $donnees2["Description"];
+
+                                    }
+                                    ?>
+
+                                </p></td>
                             <td class="prix"><?php echo $donnees["Prix"]; ?> €</td>
+                            <td>
+                            <?php
+                        if($donnees["ID_formule"] === null){
+                                echo "Pas encore utiliser";
+                            }
+                            else{
+                                $reponse3 = $bdd->query('SELECT * FROM _magasin_partenaire WHERE ID_magasin_partenaire ="' . $donnees2["ID_magasin_partenaire"] . '" ');
+                                $donnees3 = $reponse3->fetch();
+                                echo $donnees3["Nom"];
+                            }
+                            ?>
+                           </td>
                         </tr>
                         </tbody>
                         <?php

@@ -126,7 +126,8 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
         <div class="contenaire-carte">
             <img class="image-carte" src="../image/carte-cadeau.png" alt="carte cadeau">
             <h3 class="titre-carte"><?php echo $donnees2["Description"]; ?></h3>
-            <h3 class="titre-carte"><?php echo $donnees["Date_achat"]; ?></h3>
+                <h3 class="titre-carte"> N° <?php echo $donnees["ID_carte"]; ?></h3>
+            <h3 class="titre-carte"> Date d'achat : <?php echo $donnees["Date_achat"]; ?></h3>
             <div class="contenaire-prix">
                 <p class="euro">€</p>
                 <p class="prix"><?php echo $donnees["Prix"]; ?></p>

@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 try {
     // Tentative de connexion à la base de données MySQL (MAMP)
     $bdd = new PDO('mysql:host=localhost;dbname=myomnesbox;charset=utf8', 'root', '');
@@ -17,23 +18,24 @@ try {
         exit();
     }
 }
-$reponse = $bdd->query('SELECT * FROM _carte WHERE ID_utilisateur ="' . $_SESSION["ID"] . '" AND Panier = 1 ');
 
-while ($donnees = $reponse->fetch()) {
-    $nb = $_POST[''.$donnees["ID_carte"]];
+if ($_SESSION["Statut"] === 'Administrateur') {
 
-    ?>
-    <script>console.log(<?php echo $nb ;?>)</script>
-    <?php
-    $dt = time();
-    $reponse = $bdd->query('UPDATE _carte SET Panier = 0 , Date_achat ="' . date( "Y-m-d", $dt) . '" WHERE ID_utilisateur ="' . $_SESSION["ID"] . '"');
-    $nb--;
-    while ($nb != 0){
-        $dt = time();
-        $reponse = $bdd->query('INSERT INTO _carte (Prix, ID_utilisateur, ID_activite, Panier,Date_achat) VALUES ("' . $donnees["Prix"] . '", "' . $_SESSION["ID"] . '", "' . $donnees["ID_activite"] . '", 0, "' . date( "Y-m-d", $dt) . '")');
-        $nb--;
+    $id = $_POST["id"];
+    $boutton = $_POST["bouton-acter"];
+
+    if ($boutton === "oui") {
+        $reponse = $bdd->query('UPDATE _formule SET Acter = 1 WHERE ID_formule ="' . $id . '"');
+        $donnees = $reponse->fetch();
     }
+    if ($boutton === "non") {
+        $reponse = $bdd->query('DELETE FROM _formule WHERE ID_formule ="' . $id . '"');
+        $donnees = $reponse->fetch();
 
+    }
+    header("Location: ../php/espace-admin.php");
+
+} else {
+    header("Location: ../html/Accueil.html");
 }
-header("Location: ../html/Accueil.html");
 ?>

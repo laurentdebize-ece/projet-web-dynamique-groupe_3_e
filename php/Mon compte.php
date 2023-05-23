@@ -10,7 +10,7 @@
     $database = "myomnesbox";
     
     //connectez-vous dans BDD
-    
+
     // Configuration pour WAMP
     $db_handle = mysqli_connect('localhost', 'root', 'root');
     
@@ -56,7 +56,7 @@
 
     }
     
-    
+
     // Fermer la connexion à la base de données
     mysqli_close($db_handle);
 ?>
