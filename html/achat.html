@@ -9,10 +9,10 @@
 </head>
 <body>
 <header>
-    <a href="Accueil.html"><img src="../image/logo%20site.png" alt="logo" class="logo"></a>
+    <a href="../html/Accueil.html"><img src="../image/logo%20site.png" alt="logo" class="logo"></a>
     <nav>
         <ol>
-            <li><a href="Accueil.html">Accueil</a></li>
+            <li><a href="../html/Accueil.html">Accueil</a></li>
             <li><a href="../php/OmnesBox.php">Ma OmnesBox</a></li>
             <li><a href="../php/carte_cadeau.php">Carte cadeau</a></li>
             <li><a href="../php/Panier.php"><img src="../image/panier.png" alt="icone-panier"></a><a
@@ -23,11 +23,12 @@
 
 </header>
 <section>
+
     <div id="div1">
         <form method="post" name="form" action="../php/achat.php" >
 
             <label for="numcarte" id="numeroCarte"> N° de carte</label><br>
-            <input  type="number" name="numcarte" id="numcarte" placeholder="XXXX XXXX XXXX XXXX"  required><br>
+            <input  type="number" name="numcarte" id="numcarte" placeholder="XXXX XXXX XXXX XXXX"  required min="1000000000000000" max="9999999999999999"><br>
 
             <div id="flex">
                 <div>
@@ -36,7 +37,7 @@
                 </div>
                 <div>
                     <label for="crypto" id="cryptogramme">Cryptogramme</label><br>
-                    <input class="input" type="number" placeholder="XXX" name="crypto" id="crypto" max="999" required>
+                    <input class="input" type="number" placeholder="XXX" name="crypto" id="crypto" min="100" max="999" required>
                 </div>
                 <div>
                     <input class="boutton" type="submit" name="envoyer" value="Commander">

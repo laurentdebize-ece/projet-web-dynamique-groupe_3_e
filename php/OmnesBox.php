@@ -24,7 +24,7 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
         }
     }
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $ID_carte = $_POST['numcarte1'] . $_POST['numcarte2'];
+        $ID_carte = $_POST['numcarte1'];
         $requeteVerifCarte = $bdd->prepare('SELECT * FROM _carte WHERE ID_carte = :id_carte AND ID_utilisateur__beneficie IS NULL');
         $requeteVerifCarte->execute(array('id_carte' => $ID_carte));
 
@@ -78,8 +78,7 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
 
             <label for="numcarte1"></label>
             <input class="texte" type="number" id="numcarte1" name="numcarte1" required>
-            <label for="numcarte2"></label>
-            <input class="texte" type="number" id="numcarte2" name="numcarte2" required>
+            
 
 
             <input class="boutton" type="submit" value="&#9205">
