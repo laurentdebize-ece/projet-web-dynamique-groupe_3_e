@@ -10,7 +10,8 @@ body{
 
 }
 header{
-    z-index: 6;
+    z-index: 10;
+    width: 97.5%;
 
     margin-left: 1.25%;
     margin-right: 1.25%;
