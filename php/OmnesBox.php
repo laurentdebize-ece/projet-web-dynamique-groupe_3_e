@@ -94,6 +94,9 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
         OR ID_utilisateur__beneficie ="' . $_SESSION["ID"] . '") AND Panier = 0');
 
         while ($donnees = $reponse->fetch()) {
+
+
+
             $reponse2 = $bdd->query('SELECT * FROM _formule WHERE ID_formule ="' . $donnees["ID_formule"] . '" ');
             $donnees2 = $reponse2->fetch();
             var_dump($donnees2);
