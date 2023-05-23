@@ -8,6 +8,7 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
     header("Location: ../php/Mon%20compte%20non%20connecte.php");
 
 } else {
+
     ?>
 
     <!DOCTYPE html>
@@ -78,11 +79,14 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
                     ?>
                     <tbody>
                     <tr class="produit">
-                        <td><img class="image" src="../image/carte-cadeau.png">
+                        <td><img class="image" src="../image/carte-cadeau.png" alt="carte cadeau">
                             <p><?php echo $donnees2["Description"]; ?></p></td>
                         <td class="prix"><?php echo $donnees["Prix"]; ?> €</td>
-                       <!-- <td><input class="nombre" type="number" name="nombre" value="1"></td>-->
-                        <td><div class="contenaire-nombre"><input class="boutton-nombre" value="-" type="button" ><p class="nombre">1</p><input class="boutton-nombre" type="button" value="+"></div></td>
+                        <!-- <td><input class="nombre" type="number" name="nombre" value="1"></td>-->
+                        <td>
+                            <div class="contenaire-nombre"><input class="boutton-nombre" value="-" type="button">
+                                <p id="<?php echo $donnees["ID_carte"]; ; ?>" class="nombre">1</p><input class="boutton-nombre" type="button" value="+"></div>
+                        </td>
                         <td class="sous-totale"><?php echo $donnees["Prix"]; ?> €</td>
                         <td>
                             <form action="../php/supprimer-panier.php" method="post">
@@ -107,7 +111,19 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
                     <h3 id="prix-total2"></h3>
                 </div>
                 <div class="ligne2"></div>
-                <a href="../html/achat.html"> <input class="boutton" type="button" value="Commander"></a>
+
+                <form action="achat2.php" id="commander" method="post">
+                    <?php
+                    $reponse = $bdd->query('SELECT * FROM _carte WHERE ID_utilisateur ="' . $_SESSION["ID"] . '" AND Panier = 1 ');
+
+                    while ($donnees = $reponse->fetch()) {
+
+                    ?>
+                        <input type="hidden" id="id<?php echo $donnees["ID_carte"]; ?>" name="<?php echo $donnees["ID_carte"]; ?>" value="0">
+                    <?php } ?>
+                    <input class="boutton" type="submit" value="Commander">
+                </form>
+
             </div>
         </div>
     </section>
