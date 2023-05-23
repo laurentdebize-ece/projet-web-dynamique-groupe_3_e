@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Accueil</title>
     <link rel="stylesheet" href="../css/creer-compte.css">
-    <script src="../js/Accueil.js"></script>
+    <script src="../js/Acceuil.js"></script>
 </head>
 <body>
 <header>
@@ -20,6 +20,7 @@
     <div id="ligne"></div>
 
 </header>
+
 <section>
     <div id="div1">
         <h1> Créer mon compte</h1>

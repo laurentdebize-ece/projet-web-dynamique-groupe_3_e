@@ -11,16 +11,10 @@
     
     //connectez-vous dans BDD
     
-    // Configuration pour MAMP
+    // Configuration pour WAMP
     $db_handle = mysqli_connect('localhost', 'root', '');
     
     $db_found = mysqli_select_db($db_handle, $database);
-
-    if(!$db_found){
-        $db_handle = mysqli_connect('localhost', 'root', '');
-    
-        $db_found = mysqli_select_db($db_handle, $database);
-    }
 
 
     //si le BDD existe, faire le traitement
@@ -32,8 +26,16 @@
         //regarder s'il y a de résultat
         
         if(mysqli_num_rows($result) == 0){
+            echo '<script type="text/javascript">alert("Adresse mail ou mot de passe incorrect");</script>';
+            sleep(2);
             header("Location: ../php/Mon%20compte%20non%20connecte.php");
         } else {
+
+            //Regarder si l'utilisateur est un futur partenaire
+            if($data['Statut'] === "Futur Partenaire"){
+                header("Location: ../php/Modification%20mdp%20partenaire.php?id=".$data['ID_utilisateur']);
+                exit();
+            }
 
             // Commencer une nouvelle session
             session_start();

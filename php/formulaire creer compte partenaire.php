@@ -30,15 +30,7 @@
             <label for="prenom" id="name"> Prénom : </label><br>
             <div class="centrer"><input class="texte" type="text" name="prenom" id="prenom" style="text-transform: capitalize;" required><br></div>
 
-<?php
-$boutton = $_POST["boutton-creer-compte"];
-if ($boutton === "+"){
-    $statut = "Partenaire";
-}
-else{
-    $statut = "Client";
-}
-?>
+            <?php $statut = "Futur Partenaire"; ?>
             <div class="centrer"><input class="texte" type="text" name="statut" id="statut2" value="<?php echo $statut; ?>" style="display: none"></div>
 
             <label for="nom_part" id="nom_part"> Nom Partenaire : </label><br>
