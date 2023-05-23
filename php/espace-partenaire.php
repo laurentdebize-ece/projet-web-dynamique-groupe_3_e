@@ -21,7 +21,7 @@ try {
 
 if ($_SESSION["Statut"] === 'Partenaire') {
     $ID = $_SESSION["ID"];
-    $reponse = $bdd->query('SELECT ID_magasin_partenaire FROM _magasin_partenaire WHERE ID_utilisateur="' . $ID . '"');
+    $reponse = $bdd->query('SELECT * FROM _magasin_partenaire WHERE ID_utilisateur="' . $ID . '"');
     $donnees = $reponse->fetch();
     $ID_m = $donnees['ID_magasin_partenaire'];
     ?>
@@ -51,6 +51,7 @@ if ($_SESSION["Statut"] === 'Partenaire') {
 
     </header>
     <section>
+    <p class="prix">Somme gagnée : <?php echo $donnees["Somme_gagner"]; ?> €</p>
         <div id="client" class="contenaire">
             <div class="contenaire-titre">
                 <h2 class="titre">Client </h2>

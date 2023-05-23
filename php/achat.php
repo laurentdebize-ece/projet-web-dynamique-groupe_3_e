@@ -21,14 +21,10 @@ $reponse = $bdd->query('SELECT * FROM _carte WHERE ID_utilisateur ="' . $_SESSIO
 
 while ($donnees = $reponse->fetch()) {
     $nb = $_POST[''.$donnees["ID_carte"]];
-
-    ?>
-    <script>console.log(<?php echo $nb ;?>)</script>
-    <?php
     $dt = time();
     $reponse = $bdd->query('UPDATE _carte SET Panier = 0 , Date_achat ="' . date( "Y-m-d", $dt) . '" WHERE ID_utilisateur ="' . $_SESSION["ID"] . '"');
     $nb--;
-    while ($nb != 0){
+    while ($nb > 0){
         $dt = time();
         $reponse = $bdd->query('INSERT INTO _carte (Prix, ID_utilisateur, ID_activite, Panier,Date_achat) VALUES ("' . $donnees["Prix"] . '", "' . $_SESSION["ID"] . '", "' . $donnees["ID_activite"] . '", 0, "' . date( "Y-m-d", $dt) . '")');
         $nb--;

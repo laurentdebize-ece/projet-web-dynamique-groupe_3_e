@@ -90,16 +90,15 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
 
     <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-        $reponse = $bdd->query('SELECT * FROM _carte WHERE ((ID_utilisateur ="' . $_SESSION["ID"] . '" AND ID_utilisateur__beneficie IS NULL) 
-        OR ID_utilisateur__beneficie ="' . $_SESSION["ID"] . '") AND Panier = 0');
+        $reponse = $bdd->query('SELECT * FROM _carte WHERE ID_utilisateur__beneficie ="' . $_SESSION["ID"] . '" AND Panier = 0');
 
         while ($donnees = $reponse->fetch()) {
 
 
 
-            $reponse2 = $bdd->query('SELECT * FROM _formule WHERE ID_formule ="' . $donnees["ID_formule"] . '" ');
+            $reponse2 = $bdd->query('SELECT * FROM _activite WHERE ID_activite ="' . $donnees["ID_activite"] . '" ');
             $donnees2 = $reponse2->fetch();
-            var_dump($donnees2);
+            
             ?>
             <div class="contenaire-carte">
                 <img class="image-carte" src="../image/carte-cadeau.png" alt="carte cadeau">

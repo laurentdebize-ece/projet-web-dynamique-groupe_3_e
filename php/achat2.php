@@ -45,7 +45,7 @@ try {
         <form method="post" name="form" action="../php/achat.php" >
 
             <label for="numcarte" id="numeroCarte"> N° de carte</label><br>
-            <input  type="number" name="numcarte" id="numcarte" placeholder="XXXX XXXX XXXX XXXX"  required><br>
+            <input  type="number" name="numcarte" id="numcarte" placeholder="XXXX XXXX XXXX XXXX" min="1000000000000000" max="9999999999999999" required><br>
 
             <div id="flex">
                 <div>
@@ -54,7 +54,7 @@ try {
                 </div>
                 <div>
                     <label for="crypto" id="cryptogramme">Cryptogramme</label><br>
-                    <input class="input" type="number" placeholder="XXX" name="crypto" id="crypto" max="999" required>
+                    <input class="input" type="number" placeholder="XXX" name="crypto" id="crypto" max="999" min="100" required>
                 </div>
                 <div>
                     <?php
