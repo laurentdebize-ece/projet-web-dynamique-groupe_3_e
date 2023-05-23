@@ -80,32 +80,59 @@ footer{
     justify-content: space-between;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1rem;
-  }
-  
-  table th,
-  table td {
-    padding: 0.5rem;
-    text-align: left;
-    vertical-align: top;
-    border-top: 1px solid #dee2e6;
-  }
-  
-  table thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6;
-  }
-  
-  .boutton{
-    border-radius: 20px;
-    height: 40px;
-    width: 136px;
-    margin-top: 20px;
-}
-#ajout-panier{
-    border: 0;
-    background: #d3ae37;
-}
+    /* Centre les éléments horizontalement et verticalement */
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Ajustez la hauteur selon vos besoins */
+    }
+
+    /* Style de la boîte de description de l'activité */
+    .description_activite {
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 25px;
+    }
+
+    /* Style des descriptions des activités */
+    .description {
+        position: absolute;;
+        padding: 10px;
+        margin-bottom: 10px;
+        margin-top: 50px;
+        text-align: center;
+        font-size: 18px; /* Taille de police augmentée */
+        color: #000;
+        z-index: 2; /* Met le texte au premier plan */
+    }
+
+    /* Style de l'image de l'activité */
+    .image_activite {
+        display: block;
+        margin: 0 auto; /* Centre l'image horizontalement */
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+        z-index: 1; /* Met l'image au second plan */
+    }
+
+    /* Style du bouton Ajouter au panier */
+    .boutton-ajout {
+        text-align: center;
+    }
+    
+    .boutton {
+        padding: 10px 20px;
+        background-color: #d3ae37;
+        color: #000;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    .boutton:hover {
+        background-color: #82761b;
+    }
