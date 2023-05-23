@@ -144,8 +144,9 @@ section {
 }
 
 .boutton2 {
-    margin-top: auto;
-    margin-bottom: auto;
+    position: relative;
+    top: 50GIT px;
+ 
     margin-left:100px;
     padding: 10px 20px 10px 20px;
     border-radius :20px;
