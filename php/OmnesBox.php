@@ -92,10 +92,12 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
         <h2>Mes OmnesBox</h2>
         <h3>Beneficier</h3>
         <?php
-        $reponse = $bdd->query('SELECT * FROM _carte WHERE ((ID_utilisateur ="' . $_SESSION["ID"] . '" AND ID_utilisateur__beneficie IS NULL) 
-                                                           OR ID_utilisateur__beneficie ="' . $_SESSION["ID"] . '") AND Panier = 0');
+        $reponse = $bdd->query('SELECT * FROM _carte WHERE ID_utilisateur__beneficie ="' . $_SESSION["ID"] . '" AND Panier = 0');
 
         while ($donnees = $reponse->fetch()) {
+
+
+
             $reponse2 = $bdd->query('SELECT * FROM _formule WHERE ID_formule ="' . $donnees["ID_formule"] . '" ');
             $donnees2 = $reponse2->fetch();
             ?>
@@ -112,7 +114,8 @@ if (!isset($_SESSION["connecte"]) || $_SESSION["connecte"] == false) {
                     <input type="submit" class="boutton2" value="Utiliser">
                 </form>
             </div>
-        <?php } ?>
+        <?php
+        } ?>
         <h3>Acheter</h3>
         <?php
         /*$reponse = $bdd->query('SELECT * FROM _carte WHERE ((ID_utilisateur ="' . $_SESSION["ID"] . '" AND ID_utilisateur__beneficie IS NULL) OR ID_utilisateur__beneficie ="' . $_SESSION["ID"] . '") AND Panier = 0 ');*/
